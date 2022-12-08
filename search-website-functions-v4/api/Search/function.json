@@ -12,7 +12,7 @@
       "route": "search"
     },
     {
-      "type": "http",
+      "type": "https",
       "direction": "out",
       "name": "res"
     }
