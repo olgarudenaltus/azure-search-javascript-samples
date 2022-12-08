@@ -3,7 +3,7 @@ const { CONFIG } = require("../config");
 
 // Create a SearchClient to send queries
 const client = new SearchClient(
-    `https://` + CONFIG.SearchServiceName + `.search.windows.net/`,
+    `http://` + CONFIG.SearchServiceName + `.search.windows.net/`,
     CONFIG.SearchIndexName,
     new AzureKeyCredential(CONFIG.SearchApiKey)
 );
@@ -73,9 +73,7 @@ module.exports = async function (context, req) {
 
         // Sending the search request
         const searchResults = await client.search(q, searchOptions);
-        console.log(`${JSON.stringify(searchResults.document)}`);
-
-        
+        console.log(searchResults);
 
         // Getting results for output
         const output = [];
@@ -90,7 +88,7 @@ module.exports = async function (context, req) {
         context.res = {
             // status: 200, /* Defaults to 200 */
             headers: {
-                "Content-type": 'text/plain;charset=utf-8'
+                "Content-type": "application/json"
             },
             body: {
                 count: searchResults.count,
