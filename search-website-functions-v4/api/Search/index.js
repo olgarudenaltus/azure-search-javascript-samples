@@ -73,6 +73,7 @@ module.exports = async function (context, req) {
 
         // Sending the search request
         const searchResults = await client.search(q, searchOptions);
+        console.log(searchResults);
 
         // Getting results for output
         const output = [];
@@ -87,7 +88,7 @@ module.exports = async function (context, req) {
         context.res = {
             // status: 200, /* Defaults to 200 */
             headers: {
-                "Content-type": "application/json"
+                "Content-type": 'text/plain;charset=utf-8'
             },
             body: {
                 count: searchResults.count,
