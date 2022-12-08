@@ -73,7 +73,9 @@ module.exports = async function (context, req) {
 
         // Sending the search request
         const searchResults = await client.search(q, searchOptions);
-        console.log(searchResults);
+        console.log(`${JSON.stringify(searchResults.document)}`);
+
+        
 
         // Getting results for output
         const output = [];
