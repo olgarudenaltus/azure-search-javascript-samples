@@ -3,7 +3,7 @@ const { CONFIG } = require("../config");
 
 // Create a SearchClient to send queries
 const client = new SearchClient(
-    `http://` + CONFIG.SearchServiceName + `.search.windows.net/`,
+    `https://` + CONFIG.SearchServiceName + `.search.windows.net/`,
     CONFIG.SearchIndexName,
     new AzureKeyCredential(CONFIG.SearchApiKey)
 );
