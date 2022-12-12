@@ -47,6 +47,7 @@ export default function Search() {
             setIsLoading(false);
         } )
         .catch(error => {
+            console.log("Unable to sebd POST request");
             console.log(error);
             setIsLoading(false);
         });
