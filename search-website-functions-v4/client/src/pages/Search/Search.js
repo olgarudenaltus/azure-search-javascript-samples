@@ -38,7 +38,11 @@ export default function Search() {
       filters: filters
     };
 
+    // axios config
     axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
+    axios.defaults.headers.post['Access-Control-Allow-Origin'] ='*';
+    axios.defaults.headers.post['Access-Control-Allow-Methods'] ='GET,POST';
+
 
     axios.post( `${apiBaseUrl || ""}/api/search`, body)
       .then(response => {
