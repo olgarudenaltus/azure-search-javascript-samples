@@ -17,7 +17,7 @@
   "scripts": {
     "pretest": "npm run start",
     "start:client": "cd client && npm start",
-    "start:api": "cd api && npm start",
+    "start:api": "cd api && func start",
     "start": "concurrently \"npm run start:client\" \"npm run start:api\"",
     "playwright_test": "playwright test"
   },
