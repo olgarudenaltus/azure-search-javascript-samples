@@ -38,6 +38,8 @@ export default function Search() {
       filters: filters
     };
 
+    axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
+
     axios.post( `${apiBaseUrl || ""}/api/search`, body)
       .then(response => {
             console.log(JSON.stringify(response.data))
@@ -47,7 +49,7 @@ export default function Search() {
             setIsLoading(false);
         } )
         .catch(error => {
-            console.log("Unable to sebd POST request");
+            console.log("Unable to send POST request");
             console.log(error);
             setIsLoading(false);
         });
