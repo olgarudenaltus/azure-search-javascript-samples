@@ -54,6 +54,7 @@ export default function Search() {
         } )
         .catch(error => {
             console.log("Unable to send POST request");
+            console.log(axios.defaults.headers)
             console.log(error);
             setIsLoading(false);
         });
