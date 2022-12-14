@@ -8,6 +8,9 @@ import Pager from '../../components/Pager/Pager';
 import Facets from '../../components/Facets/Facets';
 import SearchBar from '../../components/SearchBar/SearchBar';
 
+// import * as fs from 'fs';
+// import * as https from 'https';
+
 import apiBaseUrl from "../../config";
 import "./Search.css";
 
@@ -39,10 +42,11 @@ export default function Search() {
     };
 
     // axios config
-    axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
-    axios.defaults.headers.post['Access-Control-Allow-Origin'] ='*';
-    axios.defaults.headers.post['Access-Control-Allow-Methods'] ='GET,POST';
-
+    // axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
+    // axios.defaults.headers.post['Access-Control-Allow-Origin'] ='*';
+    // axios.defaults.headers.post['Access-Control-Allow-Methods'] ='GET,POST';
+    // const httpsAgent = new https.Agent({ ca: fs.readFileSync("C:/Users/33072/OneDrive - Altus Group Limited/Downloads/ZscalerRoot.pem") });
+    // axios.defaults.httpAgent = httpsAgent
 
     axios.post( `${apiBaseUrl || ""}/api/search`, body)
       .then(response => {
@@ -90,6 +94,7 @@ export default function Search() {
       </div>
     )
   }
+
 
   return (
     <main className="main main--search container-fluid">

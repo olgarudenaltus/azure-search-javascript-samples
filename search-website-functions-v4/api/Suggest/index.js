@@ -18,7 +18,7 @@ module.exports = async function (context, req) {
     const suggester = (req.query.suggester || (req.body && req.body.suggester));
     
     // Let's get the top 5 suggestions for that search term
-    const suggestions = await client.suggest(q, suggester, {top: parseInt(top)});
+    const suggestions = await client.suggest(q, "suggester", {top: parseInt(top)});
     //const suggestions = await client.autocomplete(q, suggester, {top: parseInt(top)});
 
     context.log(suggestions);

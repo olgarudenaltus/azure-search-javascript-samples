@@ -8,6 +8,8 @@ const client = new SearchClient(
     new AzureKeyCredential(CONFIG.SearchApiKey)
 );
 
+
+
 // creates filters in odata syntax
 const createFilterExpression = (filterList, facets) => {
     let i = 0;
@@ -83,6 +85,42 @@ module.exports = async function (context, req) {
 
         // Logging search results
         context.log(searchResults.count);
+
+        // iterate over list of dicts
+        // function deleteNanfromYear(obj, val) {
+        //     for (var i = 0; i < obj.length; ++i) {
+        //         if (obj[i].value === "nan")
+        //         {
+        //             obj.splice(i, 1);
+        //             i -= 1
+        //         }
+        //         else {
+        //             obj[i].value = obj[i].value.trim()
+        //             obj[i].value = obj[i].value.substring(0, obj[i].value.indexOf('.'));;
+        //             // console.log(obj[i].count + ", " + obj[i].value);
+        //         }
+                
+        //     }
+        // }
+
+        // function deleteNanfromState(obj, val) {
+        //     for (var i = 0; i < obj.length; ++i) {
+        //         if (obj[i].value === "nan")
+        //         {
+        //             obj.splice(i, 1);
+        //             i -= 1
+        //         }
+        //         else {
+        //             obj[i].value = obj[i].value.trim()
+        //             // console.log(obj[i].count + ", " + obj[i].value);
+        //         }
+                
+        //     }
+        // }
+
+        // deleteNanfromYear(searchResults.facets['year'],"nan")
+        // deleteNanfromState(searchResults.facets['state'],"nan")
+
 
         // Creating the HTTP Response
         context.res = {

@@ -4,11 +4,12 @@
 }
 
 .navbar-logo {
-    width: 1.5em;
+    width: 4em;
     height: auto;
+    margin-left:20px
 }
 
-.nav-link { color: #fff; }
+.nav-link { color: #fff !important; }
 .nav-link:hover { color: #eee; }
 
 .auth-link { color: #fff; }

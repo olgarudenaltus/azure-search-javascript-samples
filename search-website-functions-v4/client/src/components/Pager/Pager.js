@@ -6,6 +6,7 @@ export default function Pager(props) {
 
     let [selectedPage, setSelectedPage] = useState(props.currentPage);
     let totalPages = Math.ceil(props.resultCount / props.resultsPerPage);
+    console.log(totalPages)
 
     useEffect(_=>{
         props.setCurrentPage(selectedPage);

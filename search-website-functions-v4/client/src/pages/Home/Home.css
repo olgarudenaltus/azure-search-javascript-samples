@@ -13,4 +13,10 @@
 
 .poweredby {
     text-align: center;
+    margin-bottom: 5vh;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
 }

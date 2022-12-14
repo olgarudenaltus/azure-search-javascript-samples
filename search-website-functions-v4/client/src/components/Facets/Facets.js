@@ -6,7 +6,10 @@ import "./Facets.css";
 
 export default function Facets(props) {
 
+    
+
     function mapFacetName(facetName) {
+        facetName = facetName==="metadata_storage_file_extension"?"File Extension":facetName
         const capitalizeFirstLetter = (string) =>
             string[0] ? `${string[0].toUpperCase()}${string.substring(1)}` : '';
         facetName = facetName.trim();
@@ -27,8 +30,10 @@ export default function Facets(props) {
     }
 
     var facets;
+    // console.log(Object.keys(props.facets))
     try{
         facets = Object.keys(props.facets).map(key => {
+            // console.log(key)
             return <CheckboxFacet 
                 key={key}
                 name={key} 
@@ -43,11 +48,14 @@ export default function Facets(props) {
         console.log(error);
     }
 
+    // console.log(facets.values)
+
+
     const filters = props.filters.map((filter, index) => {
             return (
             <li key={index}>
                 <Chip 
-                    label={`${mapFacetName(filter.field)}: ${filter.value}`} 
+                    label={`${mapFacetName(filter.field )}: ${filter.value.slice(-1) === '0'?filter.value.substring(0, filter.value.indexOf('.')):filter.value}`} 
                     onDelete={() => removeFilter(filter)}
                     className="chip"
               />

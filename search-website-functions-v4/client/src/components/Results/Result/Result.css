@@ -28,3 +28,8 @@
     max-height: 12em;
     vertical-align: middle;
 }
+
+.search-result{
+    gap:3px;
+    margin: 10px 0;
+}

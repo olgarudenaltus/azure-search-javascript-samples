@@ -12,13 +12,17 @@ export default function Results(props) {
       />;
   });
 
+  // let beginDocNumber = Math.min(props.skip + 1, props.count);
+  // let endDocNumber = Math.min(props.skip + props.top, props.count);
+
+
   let beginDocNumber = Math.min(props.skip + 1, props.count);
   let endDocNumber = Math.min(props.skip + props.top, props.count);
 
   return (
     <div>
       <p className="results-info">Showing {beginDocNumber}-{endDocNumber} of {props.count.toLocaleString()} results</p>
-      <div className="row row-cols-md-5 results">
+      <div className="row results">
         {results}
       </div>
     </div>
