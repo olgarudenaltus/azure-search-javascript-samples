@@ -48,7 +48,9 @@ export default function Search() {
     // const httpsAgent = new https.Agent({ ca: fs.readFileSync("C:/Users/33072/OneDrive - Altus Group Limited/Downloads/ZscalerRoot.pem") });
     // axios.defaults.httpAgent = httpsAgent
 
-    // axios.defaults.headers["Referrer-Policy"]=["strict-origin-when-cross-origin"]
+    axios.defaults.headers["Referrer-Policy"]=["strict-origin-when-cross-origin"]
+    axios.defaults.headers.post['Access-Control-Allow-Origin'] ='*';
+    axios.defaults.headers.post['Access-Control-Allow-Methods'] ='GET,POST';
 
     axios.post( `${apiBaseUrl || ""}/api/search`, body)
       .then(response => {

@@ -5,6 +5,7 @@ import logo from '../../images/Altus-Group-white-transparent.png';
 
 import './AppHeader.css';
 
+
 export default function AppHeader() {
   return (
     <header className="header">
@@ -29,6 +30,7 @@ export default function AppHeader() {
             </li> */}
           </ul>
         </div>
+
 
         <AppHeaderAuth />
       </nav>

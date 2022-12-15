@@ -26,7 +26,7 @@ export default function App() {
 
   // Fetch authentication API & set user state
   async function fetchAuth() {
-    const response = await fetch("/.auth/login/aad");
+    const response = await fetch("/.auth/me");
     if (response) {
       const contentType = response.headers.get("content-type");
       if (contentType && contentType.indexOf("application/json") !== -1) {
