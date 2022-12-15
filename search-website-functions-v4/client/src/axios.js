@@ -5,7 +5,9 @@ const instance = axios.create({
 });
 
 instance.defaults.headers.common['Authorization'] = instance.getState().session.token;
-instance.defaults.headers.common["Referrer-Policy"] = "strict-origin-when-cross-origin"
+// instance.defaults.headers.["Referrer-Policy"] = "strict-origin-when-cross-origin"
+
+
 
 // instance.interceptors.request...
 

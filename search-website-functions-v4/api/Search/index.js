@@ -126,7 +126,8 @@ module.exports = async function (context, req) {
         context.res = {
             // status: 200, /* Defaults to 200 */
             headers: {
-                "Content-type": "application/json"
+                "Content-type": "application/json",
+                "Referrer-Policy": "strict-origin-when-cross-origin"
             },
             body: {
                 count: searchResults.count,
