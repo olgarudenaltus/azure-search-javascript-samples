@@ -49,10 +49,10 @@ export default function Search() {
     // axios.defaults.httpAgent = httpsAgent
 
     // axios.defaults.headers["Referrer-Policy"]=["strict-origin-when-cross-origin"]
-    axios.defaults.headers.post['Access-Control-Allow-Origin'] ='*';
-    axios.defaults.headers.post['Access-Control-Allow-Credentials'] =true;
-    axios.defaults.headers.post['Access-Control-Allow-Headers'] = '*';
-    axios.defaults.headers.post['Access-Control-Allow-Methods'] ='GET,POST,OPTIONS';
+    // axios.defaults.headers.post['Access-Control-Allow-Origin'] ='*';
+    // axios.defaults.headers.post['Access-Control-Allow-Credentials'] =true;
+    // axios.defaults.headers.post['Access-Control-Allow-Headers'] = '*';
+    // axios.defaults.headers.post['Access-Control-Allow-Methods'] ='GET,POST,OPTIONS';
 
     axios.post( `${apiBaseUrl || ""}/api/search`, body)
       .then(response => {
