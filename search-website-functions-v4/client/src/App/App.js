@@ -11,6 +11,8 @@ import AppFooter from '../components/AppFooter/AppFooter';
 // React Router page components
 import Home from '../pages/Home/Home';
 import Search from '../pages/Search/Search';
+import TaxPenalty from '../pages/TaxPenalty/TaxPenalty';
+import TaxStore from '../pages/TaxStore/TaxStore';
 import Details from '../pages/Details/Details';
 import Status from '../pages/Status/Status';
 
@@ -48,6 +50,8 @@ export default function App() {
       <>
       <Route path="/" element={<Home />} />
       <Route path="/search" element={<Search />} />
+      <Route path="/taxpenalty" element={<TaxPenalty />} />
+      <Route path="/taxstore" element={<TaxStore />} />
       <Route path="/details/:id" element={<Details />} />
       <Route path="/status" element={<Status />} />
       </>

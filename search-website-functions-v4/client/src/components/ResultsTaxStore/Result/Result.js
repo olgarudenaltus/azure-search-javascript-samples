@@ -18,10 +18,10 @@ export default function Result(props) {
     //     </a>
     // </div>
 
-    <div class="card border-0 border-bottom">
+    <div class="card border-0 border-bottom col-6">
         <div class='card-body'>
             <a href={"localexplorer:"+props.document.fullpath.substr(0, props.document.fullpath.lastIndexOf("\\"))}>
-                <p class="text-muted mb-1" style={{'font-size':'0.9em'}}>{props.document.fullpath}</p>
+                <p class="text-muted mb-1" style={{'font-size':'0.9em','text-overflow':'ellipsis','overflow':'hidden','white-space': 'nowrap'}}>{props.document.fullpath}</p>
             </a>
             <h5 class="card-title"><a class = "text-decoration-none text-reset" href={"localexplorer:"+props.document.fullpath.substr(0, props.document.fullpath.lastIndexOf("\\"))}>{props.document.metadata_storage_name}</a></h5>
             <div class='d-flex align-content-around flex-wrap search-result'>
@@ -38,8 +38,8 @@ export default function Result(props) {
                 <span class="badge rounded-pill bg-secondary">{props.document.subfolder10==="nan"?"":props.document.subfolder10}</span>
                 <span class="badge rounded-pill bg-secondary">{props.document.subfolder11==="nan"?"":props.document.subfolder11}</span>
             </div>
-            <div style={{'padding-left':'80px'}}>
-                <div class="col-7">
+            <div style={{'padding-left':'0px'}}>
+                <div class="col-12">
                     <div class="d-flex justify-content-start">
                         <span class="me-2">FILE</span>
                         <span class="text-muted mx-2">type: {props.document.file_extension} </span>
@@ -47,7 +47,7 @@ export default function Result(props) {
                         <span class="text-muted mx-2">last updated: {props.document.metadata_storage_last_modified} </span>
                     </div>
                 </div>
-                <div class="col-7">
+                <div class="col-12">
                     <div class="d-flex justify-content-start">
                         <span class="me-2">PROP</span>
                         <span class="text-muted mx-2">drive: {props.document.drive} </span>
@@ -55,7 +55,7 @@ export default function Result(props) {
                         <span class="text-muted mx-2">state: {props.document.state} </span>
                     </div>
                 </div>
-                <div class="col-7">
+                <div class="col-12">
                     <div class="d-flex justify-content-start">
                         <span class="me-2">CLIENT</span>
                         <span class="text-muted mx-2">client: {props.document.client} </span>
@@ -63,7 +63,6 @@ export default function Result(props) {
                     </div>
                 </div>
             </div>
-            
         </div>
     </div>
     );
