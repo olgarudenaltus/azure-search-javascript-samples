@@ -24,7 +24,7 @@ jobs:
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN}}
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_RANDOM_WORDS_1234}}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
@@ -34,6 +34,8 @@ jobs:
           api_location: "search-website-functions-v4/api" # Api source code path - optional
           output_location: "build" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
+          app_build_command: 'npm start'
+          api_build_command: 'func start'
         env:
           NPM_CONFIG_LEGACY_PEER_DEPS: true
           NPM_CONFIG_FORCE: true
