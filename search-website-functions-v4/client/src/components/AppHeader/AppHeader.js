@@ -26,13 +26,13 @@ export default function AppHeader() {
               <a className="nav-link" href="/#/Search">Search</a>
             </li>
             <li class="nav-item dropdown">
-              {/* <a class="nav-link dropdown-toggle" href="/#" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenuButton1">
+              <a class="nav-link dropdown-toggle" href="/#" type="button" role="button" data-bs-toggle="dropdown">
                 Tax
               </a>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="/#/TaxPenalty">Penalty</a></li>
                 <li><a class="dropdown-item" href="/#/TaxStore">Store number</a></li>
-              </ul> */}
+              </ul>
             </li>
             {/* <li className="nav-item">
               <a className="nav-link" href="https://azure.microsoft.com/services/search/">Learn more</a>

@@ -17,6 +17,8 @@ import Details from '../pages/Details/Details';
 import Status from '../pages/Status/Status';
 
 // Bootstrap styles, optionally with jQuery and Popper
+// import 'jquery/dist/jquery.min.js';
+import 'bootstrap/dist/js/bootstrap.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Custom app styles
