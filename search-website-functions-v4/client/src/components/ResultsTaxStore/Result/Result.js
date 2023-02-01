@@ -44,15 +44,15 @@ export default function Result(props) {
                         <span class="me-2">FILE</span>
                         <span class="text-muted mx-2">type: {props.document.file_extension} </span>
                         <span class="text-muted mx-2">size: {(props.document.metadata_storage_size/10000).toFixed(2)}MB </span>
-                        <span class="text-muted mx-2">last updated: {props.document.metadata_storage_last_modified} </span>
+                        <span class="text-muted mx-2">last updated: {props.document.metadata_storage_last_modified.substring(0,10)} </span>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="d-flex justify-content-start">
                         <span class="me-2">PROP</span>
                         <span class="text-muted mx-2">drive: {props.document.drive} </span>
-                        <span class="text-muted mx-2">year: {props.document.year} </span>
-                        <span class="text-muted mx-2">state: {props.document.state} </span>
+                        <span class="text-muted mx-2">{props.document.year==="nan"?"":"year: " + props.document.year.substring(0,4)}  </span>
+                        <span class="text-muted mx-2">{props.document.state==="nan"?"":"state: " + props.document.state} </span>
                     </div>
                 </div>
                 <div class="col-12">

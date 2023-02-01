@@ -26,7 +26,10 @@ export default function Result(props) {
             </a> */}
             <div class>
                 <p>
-                    {props.document.content.substring(0, 700)}
+                    {props.document.content.substring(0,350)}
+                    {/* {props.document.content.substring(props.document.content.indexOf("penalty"), props.document.content.indexOf("."))} */}
+                    {/* props.document.content.substring(props.document.content.indexOf("penalty"), str.lastIndexOf(".")); */}
+                    {/* props.document.content.substring(props.document.content.indexOf("penalty") + 1); */}
                 </p>
             </div>
             

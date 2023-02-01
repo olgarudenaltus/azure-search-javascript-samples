@@ -4,7 +4,7 @@ const { CONFIG } = require("../config");
 // Create a SearchClient to send queries
 const client = new SearchClient(
     `https://` + CONFIG.SearchServiceName + `.search.windows.net/`,
-    "tax-penalty-index",
+    "tax-peanlty-search-index",
     new AzureKeyCredential(CONFIG.SearchApiKey)
 );
 
