@@ -20,10 +20,11 @@ export default function Result(props) {
 
     <div class="card border-0 border-bottom">
         <div class='card-body'>
-            <a href={"localexplorer:"+props.document.fullpath.substr(0, props.document.fullpath.lastIndexOf("\\"))}>
+            {/* <a href={"localexplorer:"+props.document.fullpath.substr(0, props.document.fullpath.lastIndexOf("\\"))}>
                 <p class="text-muted mb-1" style={{'font-size':'0.9em'}}>{props.document.fullpath}</p>
-            </a>
-            <h5 style={{'overflow':'hidden','white-space':'nowrap'}} class="card-title"><a class = "text-decoration-none" href={"localexplorer:"+props.document.fullpath.substr(0, props.document.fullpath.lastIndexOf("\\"))}>{props.document.metadata_storage_name}</a> <span class="text-muted mb-1" style={{'font-size':'0.85em'}}><a class ="text-muted mb-1 text-decoration-none" href={"localexplorer:"+props.document.fullpath.substr(0, props.document.fullpath.lastIndexOf("\\"))}>({props.document.fullpath})</a></span></h5>
+            </a> */}
+            <h5 style={{'overflow':'hidden','white-space':'nowrap'}} class="card-title"><a class = "text-decoration-none" href={"localexplorer:"+props.document.fullpath.substr(0, props.document.fullpath.lastIndexOf("\\"))}>{props.document.metadata_storage_name}</a></h5>
+            {/* <h5 style={{'overflow':'hidden','white-space':'nowrap'}} class="card-title"><a class = "text-decoration-none" href={"localexplorer:"+props.document.fullpath.substr(0, props.document.fullpath.lastIndexOf("\\"))}>{props.document.metadata_storage_name}</a> <span class="text-muted mb-1" style={{'font-size':'0.85em'}}><a class ="text-muted mb-1 text-decoration-none" href={"localexplorer:"+props.document.fullpath.substr(0, props.document.fullpath.lastIndexOf("\\"))}>({props.document.fullpath})</a></span></h5> */}
             <div class='d-flex align-content-around flex-wrap search-result'>
                 {/* <span class="badge rounded-pill bg-primary">{props.document.client_folder}</span>
                 <span class="badge rounded-pill bg-secondary">{props.document.subfolder1}</span>
@@ -38,28 +39,36 @@ export default function Result(props) {
                 <span class="badge rounded-pill bg-secondary">{props.document.subfolder10==="nan"?"":props.document.subfolder10}</span>
                 <span class="badge rounded-pill bg-secondary">{props.document.subfolder11==="nan"?"":props.document.subfolder11}</span> */}
             </div>
-            <div style={{'padding-left':'80px'}}>
+            <div style={{'padding-left':'50px'}}>
+            <div class="col-12">
+                    <div class="d-flex justify-content-start">
+                        <span class="me-2">PATH</span>
+                        <span class="text-muted mx-2"><a href={"localexplorer:"+props.document.fullpath.substr(0, props.document.fullpath.lastIndexOf("\\"))}>
+                <p class="text-muted mb-1" style={{'font-size':'0.9em'}}>{props.document.fullpath}</p>
+            </a></span>
+                    </div>
+                </div>
                 <div class="col-7">
                     <div class="d-flex justify-content-start">
                         <span class="me-2">FILE</span>
-                        <span class="text-muted mx-2">type: <b>{props.document.file_extension}</b> </span>
-                        <span class="text-muted mx-2">size: <b>{(props.document.metadata_storage_size/10000).toFixed(2)}MB</b> </span>
-                        <span class="text-muted mx-2">last updated: <b>{props.document.metadata_storage_last_modified.substring(0,10)}</b> </span>
+                        <span class="text-muted mx-2">type:</span> <span>{props.document.file_extension}</span>
+                        <span class="text-muted mx-2">size: </span><span>{(props.document.metadata_storage_size/10000).toFixed(2)}MB </span>
+                        <span class="text-muted mx-2">last updated:  </span><span>{props.document.metadata_storage_last_modified.substring(0,10)} </span>
                     </div>
                 </div>
                 <div class="col-7">
                     <div class="d-flex justify-content-start">
                         <span class="me-2">PROP</span>
-                        <span class="text-muted mx-2">drive: <b>{props.document.drive}</b></span>
-                        <span class="text-muted mx-2">year: <b>{props.document.year==="nan"?"": props.document.year.substring(0,4)}</b> </span>
-                        <span class="text-muted mx-2">state: <b>{props.document.state==="nan"?"":props.document.state}</b></span>
+                        <span class="text-muted mx-2">drive:  </span><span>{props.document.drive}</span>
+                        <span class="text-muted mx-2">year:  </span><span>{props.document.year==="nan"?"": props.document.year.substring(0,4)} </span>
+                        <span class="text-muted mx-2">state: </span><span>{props.document.state==="nan"?"":props.document.state}</span>
                     </div>
                 </div>
                 <div class="col-7">
                     <div class="d-flex justify-content-start">
                         <span class="me-2">CLIENT</span>
-                        <span class="text-muted mx-2">client: <b>{props.document.client} </b></span>
-                        <span class="text-muted mx-2">client folder: <b>{props.document.client_folder} </b></span>
+                        <span class="text-muted mx-2">client:  </span><span>{props.document.client} </span>
+                        <span class="text-muted mx-2">client folder:  </span><span>{props.document.client_folder} </span>
                     </div>
                 </div>
             </div>
