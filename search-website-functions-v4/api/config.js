@@ -1,9 +1,9 @@
 // tax search config
 const CONFIG = {
-    SearchIndexName: process.env["SearchIndexName"] || "tax-top3-full-index",
+    SearchIndexName: process.env["SearchIndexName"] || "taxus-w-meta",
     SearchApiKey: process.env["SearchApiKey"] || "29481C4EC76A7059D7F69F89E4BA0143",
     SearchServiceName: process.env["SearchServiceName"] || "cogsrch-aginodev01-cace-001",
-    SearchFacets: process.env["SearchFacets"] || "year,state,client,drive,file_extension", 
+    SearchFacets: process.env["SearchFacets"] || "year,state,client,drive,metadata_spo_item_extension*", 
 }
 console.log(CONFIG);
 if (!CONFIG.SearchIndexName || !CONFIG.SearchApiKey || !CONFIG.SearchServiceName) throw Error("./config.js::Cognitive Services key is missing");

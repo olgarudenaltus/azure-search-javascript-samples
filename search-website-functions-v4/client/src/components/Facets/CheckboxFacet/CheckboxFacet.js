@@ -33,23 +33,28 @@ export default function CheckboxFacet(props) {
 
     const checkboxes = props.values.map(facetValue => {
 
-        let isSelected = props.selectedFacets.some(facet => facet.value === facetValue.value);
+        // let isSelected = props.selectedFacets.some(facet => facet.value === facetValue.value);
+        // let isSelected = document.getElementById({facetValue}).checked;
+        // let isSelected = props.selectedFacets.some(facet => facet.value === facetValue.value);
 
         // console.log(props.values)
         
         return (
             <FacetValueListItem dense disableGutters id={facetValue.value}>
                 <Checkbox 
+                    id ={facetValue.value}
                     edge="start" 
                     disableRipple 
-                    checked={isSelected}
-                    onClick= {
-                        isSelected ? 
-                        () => props.removeFilter({field: props.name, value: facetValue.value}) :
-                        () => props.addFilter(props.name, facetValue.value)
-                    }
+                    // checked={isSelected}
+                    // onClick= {
+                    //     isSelected ? 
+                    //     () => props.removeFilter({field: props.name, value: facetValue.value}) :
+                    //     () => props.addFilter(props.name, facetValue.value)
+                    // }
+                    onClick = {props.addFilterValue(props.name,facetValue.value)}
                 />
-                <ListItemText primary={facetValue.value.slice(-1) === '0'?facetValue.value.substring(0, facetValue.value.indexOf('.'))+ " (" + facetValue.count + ")":facetValue.value + " (" + facetValue.count + ")"}/>
+                {/* <ListItemText primary={facetValue.value.slice(-1) === '0'?facetValue.value.substring(0, facetValue.value.indexOf('.'))+ " (" + facetValue.count + ")":facetValue.value + " (" + facetValue.count + ")"}/> */}
+                <ListItemText primary={facetValue.value.slice(-1) === '0'?facetValue.value.substring(0, facetValue.value.indexOf('.')):facetValue.value}/>
             </FacetValueListItem>
         );
     });
@@ -64,7 +69,7 @@ export default function CheckboxFacet(props) {
         <div>
             <FacetListItem disableRipple={true} button onClick={() => setIsExpanded(!isExpanded)}>
                 <ListItemText 
-                    primary={props.mapFacetName(props.name)}
+                    primary={props.name}
                 />
                 {isExpanded ? <ExpandLess /> : <ExpandMore />}
             </FacetListItem>

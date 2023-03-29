@@ -6,7 +6,7 @@ export default function AppFooter() {
   return (
       <footer className="footer">
         <hr />
-        &copy; 2022 Altus Group
+        &copy; 2023 Altus Group
       </footer>
   );
 };

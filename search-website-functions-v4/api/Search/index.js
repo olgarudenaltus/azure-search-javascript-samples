@@ -4,7 +4,7 @@ const { CONFIG } = require("../config");
 // Create a SearchClient to send queries
 const client = new SearchClient(
     `https://` + CONFIG.SearchServiceName + `.search.windows.net/`,
-    CONFIG.SearchIndexName,
+    "taxus-w-meta",
     new AzureKeyCredential(CONFIG.SearchApiKey)
 );
 
@@ -52,11 +52,13 @@ module.exports = async function (context, req) {
     try {
 
         // Reading inputs from HTTP Request
-        let q = (req.query.q || (req.body && req.body.q));
+        // const checkedFilters = " + NC + CVS"
+        const checkedFilters = req.body.checkedFilters
+        let q = (req.query.q || (req.body && req.body.q)) +checkedFilters;
         const top = (req.query.top || (req.body && req.body.top));
         const skip = (req.query.skip || (req.body && req.body.skip));
         const filters = (req.query.filters || (req.body && req.body.filters));
-        const facets = readFacets(CONFIG.SearchFacets);
+        const facets = readFacets("metadata_spo_item_extension");
 
 
         // If search term is empty, search everything
@@ -72,6 +74,7 @@ module.exports = async function (context, req) {
             facets: Object.keys(facets),
             filter: createFilterExpression(filters, facets)
         };
+        console.log(searchOptions)
 
         // Sending the search request
         const searchResults = await client.search(q, searchOptions);
@@ -82,6 +85,8 @@ module.exports = async function (context, req) {
         for await (const result of searchResults.results) {
             output.push(result);
         }
+
+        // delete Object.assign(searchResults.facets, {["file_extension"]: searchResults.facets["metadata_spo_item_extension"] })["metadata_spo_item_extension"];
 
         // Logging search results
         context.log(searchResults.count);

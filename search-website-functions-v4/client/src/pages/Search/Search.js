@@ -28,6 +28,7 @@ export default function Search() {
   const [ filters, setFilters ] = useState([]);
   const [ facets, setFacets ] = useState({});
   const [ isLoading, setIsLoading ] = useState(true);
+  const [ checkedFilters, setCheckedFilters] = useState([])
 
   let resultsPerPage = top;
   
@@ -38,6 +39,7 @@ export default function Search() {
       q: q,
       top: top,
       skip: skip,
+      checkedFilters: checkedFilters+"",
       filters: filters
     };
 

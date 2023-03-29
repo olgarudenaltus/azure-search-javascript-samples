@@ -25,15 +25,6 @@ export default function AppHeader() {
             <li className="nav-item">
               <a className="nav-link" href="/#/Search">Search</a>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="/#" type="button" role="button" data-bs-toggle="dropdown">
-                Tax
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/#/TaxPenalty">Penalty</a></li>
-                <li><a class="dropdown-item" href="/#/TaxStore">Store number</a></li>
-              </ul>
-            </li>
             {/* <li className="nav-item">
               <a className="nav-link" href="https://azure.microsoft.com/services/search/">Learn more</a>
             </li> */}
