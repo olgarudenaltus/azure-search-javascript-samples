@@ -30,10 +30,14 @@ export default function Facets(props) {
     }
 
     function addFilterValue(name,value){
-        // console.log(name,value)
-        // const newFilters = props.checkedFilters.concat({ field: name, value: value });
-        // props.setCheckedFilters(newFilters)
+        console.log("Adding")
+        console.log(name,value)
+        console.log(props.checkedFilters)
 
+        const newFilters = props.checkedFilters.concat(value);
+        console.log(newFilters)
+        props.setCheckedFilters(newFilters)
+        console.log(props.checkedFilters)
         // props.checkedFilters
         // props.checkedFilters.terms = Object.assign(props.checkedFilters.terms,value)
         // props.checkedFilters =  props.checkedFilters +"+"+value; 
@@ -41,8 +45,15 @@ export default function Facets(props) {
         // props.setCheckedFilters(newCheckedFilters)
     }
 
-    function removeFilterValue(filter){
-        console.log(filter)
+    function removeFilterValue(name,value){
+        console.log("Removing")
+        console.log(name,value)
+        console.log(props.checkedFilters)
+
+        const newFilters = props.checkedFilters.filter((item) => item !== value);
+        props.setCheckedFilters(newFilters);
+        console.log(newFilters)
+
     }
 
     const facetsStatic = require('./facets.json');
@@ -79,7 +90,10 @@ export default function Facets(props) {
                 key={key}
                 name={key}
                 addFilterValue={addFilterValue}
+                removeFilterValue={removeFilterValue}
                 values={facetsStatic.facets[key]}
+                checkedFilters={props.checkedFilters}
+                selectedFacets={props.filters.filter( f => f.field === key)}
               />;
           });
     } catch (error) {

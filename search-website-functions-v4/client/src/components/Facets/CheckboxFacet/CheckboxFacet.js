@@ -34,6 +34,8 @@ export default function CheckboxFacet(props) {
     const checkboxes = props.values.map(facetValue => {
 
         // let isSelected = props.selectedFacets.some(facet => facet.value === facetValue.value);
+        let isSelected = props.checkedFilters.some(f => f==facetValue.value);
+        // console.log(isSelected)
         // let isSelected = document.getElementById({facetValue}).checked;
         // let isSelected = props.selectedFacets.some(facet => facet.value === facetValue.value);
 
@@ -51,7 +53,13 @@ export default function CheckboxFacet(props) {
                     //     () => props.removeFilter({field: props.name, value: facetValue.value}) :
                     //     () => props.addFilter(props.name, facetValue.value)
                     // }
-                    onClick = {props.addFilterValue(props.name,facetValue.value)}
+                    // onClick = {props.addFilterValue(props.name,facetValue.value)}
+                    // onClick = {console.log(facetValue.value)}
+                    onClick= {
+                        isSelected ? 
+                        () => {props.removeFilterValue(props.name,facetValue.value);console.log("removed: " + facetValue.value);} :
+                        () => {props.addFilterValue(props.name,facetValue.value);console.log("added: " + facetValue.value);console.log(isSelected);}
+                    }
                 />
                 {/* <ListItemText primary={facetValue.value.slice(-1) === '0'?facetValue.value.substring(0, facetValue.value.indexOf('.'))+ " (" + facetValue.count + ")":facetValue.value + " (" + facetValue.count + ")"}/> */}
                 <ListItemText primary={facetValue.value.slice(-1) === '0'?facetValue.value.substring(0, facetValue.value.indexOf('.')):facetValue.value}/>
