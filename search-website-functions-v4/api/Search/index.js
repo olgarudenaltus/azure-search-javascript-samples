@@ -53,18 +53,37 @@ module.exports = async function (context, req) {
 
         // Reading inputs from HTTP Request
         // const checkedFilters = " + NC + CVS"
-        const checkedFilters = req.body.checkedFilters
-        let q = (req.query.q || (req.body && req.body.q)) +checkedFilters;
+        const checkedFilters = req.body.checkedFilters;
+        let q = (req.query.q || (req.body && req.body.q));
         const top = (req.query.top || (req.body && req.body.top));
         const skip = (req.query.skip || (req.body && req.body.skip));
         const filters = (req.query.filters || (req.body && req.body.filters));
         const facets = readFacets("metadata_spo_item_extension");
 
+        console.log(q)
+
 
         // If search term is empty, search everything
-        if (!q || q === "") {
+        if ((!q || q === "")) {
             q = "*";
         }
+
+        var checkedFiltersFormatted;
+
+        if (checkedFilters.length !==0 && q==="*"){
+            checkedFiltersFormatted = "'"+checkedFilters.join("'+'")+"'"
+            q = checkedFiltersFormatted
+        }
+        else if (checkedFilters.length ===0){
+            q = q
+        }
+        else if (checkedFilters.length !==0 && q!=="*"){
+            checkedFiltersFormatted = "'"+checkedFilters.join("'+'")+"'"
+            q = "'"+q+"'" + "+" + checkedFiltersFormatted
+        }
+
+
+        console.log(q)
 
         // Creating SearchOptions for query
         let searchOptions = {

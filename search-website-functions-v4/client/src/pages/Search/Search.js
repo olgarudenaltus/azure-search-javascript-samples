@@ -39,9 +39,12 @@ export default function Search() {
       q: q,
       top: top,
       skip: skip,
-      checkedFilters: checkedFilters+"",
+      checkedFilters: checkedFilters,
+      // checkedFilters: !checkedFilters?"":"'" + checkedFilters.join("+") + "'",
       filters: filters
     };
+
+    console.log(body)
 
     // axios config
     // axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
