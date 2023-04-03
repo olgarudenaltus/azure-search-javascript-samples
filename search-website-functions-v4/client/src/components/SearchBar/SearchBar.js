@@ -33,7 +33,7 @@ export default function SearchBar(props) {
     const onChangeHandler = () => {
 
         var searchTerm = document.getElementById("search-box").value;
-        setShowSuggestions(true);
+        // setShowSuggestions(true);
         setQ(searchTerm);
 
         // use this prop if you want to make the search more reactive
@@ -42,30 +42,31 @@ export default function SearchBar(props) {
         }
     }
 
-    useEffect(_ =>{
-        const timer = setTimeout(() => {
-            const body = {
-                q: q,
-                top: 5,
-                suggester: 'sg'
-            };
+    // useEffect(_ =>{
+    //     const timer = setTimeout(() => {
+    //         const body = {
+    //             q: q,
+    //             top: 5,
+    //             suggester: 'sg'
+    //         };
 
-            if (q === '') {
-                setSuggestions([]);
-            } else {
-                axios.post( '/api/suggest', body)
-                .then(response => {
-                    console.log(JSON.stringify(response.data))
-                    setSuggestions(response.data.suggestions);
-                } )
-                .catch(error => {
-                    console.log(error);
-                    setSuggestions([]);
-                });
-            }
-        }, 300);
-        return () => clearTimeout(timer);
-    }, [q, props]);
+    //         if (q === '') {
+    //             setSuggestions([]);
+    //         } else {
+    //             axios.post( '/api/suggest', body)
+    //             .then(response => {
+    //                 console.log(JSON.stringify(response.data))
+    //                 setSuggestions(response.data.suggestions);
+    //             } )
+    //             .catch(error => {
+    //                 console.log(error);
+    //                 setSuggestions([]);
+    //             });
+    //         }
+    //     }, 300);
+    //     return () => clearTimeout(timer);
+    // }, [q, props])
+    ;
 
     var suggestionDiv;
     if (showSuggestions) {
@@ -86,8 +87,9 @@ export default function SearchBar(props) {
                         placeholder="What are you looking for?" 
                         onChange={onChangeHandler} 
                         defaultValue={props.q}
-                        onBlur={() => setShowSuggestions(false)}
-                        onClick={() => setShowSuggestions(true)}>
+                        // onBlur={() => setShowSuggestions(false)}
+                        // onClick={() => setShowSuggestions(true)}
+                        >
                     </input>
                     {suggestionDiv}
                 </div>

@@ -62,7 +62,7 @@ export default function CheckboxFacet(props) {
                     }
                 />
                 {/* <ListItemText primary={facetValue.value.slice(-1) === '0'?facetValue.value.substring(0, facetValue.value.indexOf('.'))+ " (" + facetValue.count + ")":facetValue.value + " (" + facetValue.count + ")"}/> */}
-                <ListItemText primary={facetValue.value.slice(-1) === '0'?facetValue.value.substring(0, facetValue.value.indexOf('.')):facetValue.value}/>
+                <ListItemText primary={facetValue.value}/>
             </FacetValueListItem>
         );
     });
