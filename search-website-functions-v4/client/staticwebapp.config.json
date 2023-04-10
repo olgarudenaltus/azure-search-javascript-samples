@@ -1,8 +1,12 @@
  {
     "routes": [
       {
-        "route": "/*",
-        "allowedRoles": [ "authenticated" ]
+        "route": "/search",
+        "allowedRoles": ["authenticated"]
+      },
+      {
+          "route": "/api/search",
+          "allowedRoles": ["authenticated"]
       }
     ],
     "auth": {
