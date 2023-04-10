@@ -6,9 +6,20 @@
     "routes": [
       {
         "route": "/*",
-        "allowedRoles": ["authenticated"]
+        "allowedRoles": [ "authenticated" ]
       }
     ],
+    "auth": {
+      "identityProviders": {
+        "azureActiveDirectory": {
+          "registration": {
+            "openIdIssuer": "https://login.microsoftonline.com/01dc41c3-be9a-4fa8-9af6-11a6564a4200",
+            "clientIdSettingName": "AZURE_CLIENT_ID",
+            "clientSecretSettingName": "AZURE_CLIENT_SECRET"
+          }
+        }
+      }
+    },
     "responseOverrides": {
       "401": {
         "statusCode": 302,
