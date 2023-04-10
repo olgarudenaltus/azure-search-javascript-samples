@@ -1,12 +1,8 @@
  {
     "routes": [
       {
-        "route": "/search",
-        "allowedRoles": ["authenticated"]
-      },
-      {
-          "route": "/api/search",
-          "allowedRoles": ["authenticated"]
+        "route": "/*",
+        "allowedRoles": [ "authenticated" ]
       }
     ],
     "auth": {
@@ -20,6 +16,9 @@
           }
         }
       }
+    },
+    "navigationFallback": {
+      "rewrite": "index.html"
     },
     "responseOverrides": {
       "401": {
