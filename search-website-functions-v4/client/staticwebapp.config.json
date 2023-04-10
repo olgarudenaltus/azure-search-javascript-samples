@@ -1,6 +1,11 @@
  {
     "routes": [
       {
+        "route": "/.auth/login/aad",
+        "allowedRoles": ["anonymous", "authenticated"],
+        "statusCode": 404
+      },
+      {
         "route": "/*",
         "allowedRoles": [ "authenticated" ]
       }
@@ -18,7 +23,12 @@
       }
     },
     "navigationFallback": {
-      "rewrite": "index.html"
+      "rewrite": "/index.html",
+      "exclude": [
+        "/css/*",
+        "/img/*",
+        "/js/*"
+    ]
     },
     "responseOverrides": {
       "401": {
