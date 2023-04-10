@@ -13,7 +13,7 @@ export default function AppHeaderAuth() {
   const authElement = document.querySelector('.auth');
   if (authElement) {
     // Default sign in
-    let html = '/.auth/login/aad" class="auth-link">Sign In</a>';
+    let html = '<a href= "/.auth/login/aad" class="auth-link">Sign In</a>';
     
     // User profile and sign out
     let clientPrincipal = (user && user.clientPrincipal) || null,
