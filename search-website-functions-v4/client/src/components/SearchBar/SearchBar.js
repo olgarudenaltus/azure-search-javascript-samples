@@ -23,7 +23,7 @@ export default function SearchBar(props) {
 
     const onEnterButton = (event) => {
         // activate search button
-        document.getElementById("searchButton").disabled = false;
+        // document.getElementById("searchButton").disabled = false;
 
         if (event.keyCode === 13) {
             onSearchHandler();
@@ -94,7 +94,7 @@ export default function SearchBar(props) {
                     {suggestionDiv}
                 </div>
                 <div className="input-group-btn">
-                    <button className="btn btn-primary rounded-0" type="submit" id ="searchButton" disabled onClick={onSearchHandler}>
+                    <button className="btn btn-primary rounded-0" type="submit" id ="searchButton" onClick={onSearchHandler}>
                         Search
                     </button>
                 </div>
