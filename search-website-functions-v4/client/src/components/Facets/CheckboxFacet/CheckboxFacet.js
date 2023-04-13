@@ -58,7 +58,7 @@ export default function CheckboxFacet(props) {
                     onClick= {
                         isSelected ? 
                         () => {props.removeFilterValue(props.name,facetValue.value);console.log("removed: " + facetValue.value);} :
-                        () => {props.addFilterValue(props.name,facetValue.value);console.log("added: " + facetValue.value);console.log(isSelected);}
+                        () => {props.addFilterValue(props.name,facetValue.value);console.log("added: " + facetValue.value);console.log(isSelected);document.getElementById("selectedFilters").innerHTML=console.log(props.checkedFilters);}
                     }
                 />
                 {/* <ListItemText primary={facetValue.value.slice(-1) === '0'?facetValue.value.substring(0, facetValue.value.indexOf('.'))+ " (" + facetValue.count + ")":facetValue.value + " (" + facetValue.count + ")"}/> */}

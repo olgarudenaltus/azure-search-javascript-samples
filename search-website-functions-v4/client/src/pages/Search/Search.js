@@ -116,6 +116,9 @@ export default function Search() {
           <div className="search-bar">
             <SearchBar postSearchHandler={postSearchHandler} q={q}></SearchBar>
           </div>
+          <div className="">
+            <p id="selectedFilters">Selected: </p>
+          </div>
           <Facets facets={facets} filters={filters} setFilters={setFilters} checkedFilters={checkedFilters} setCheckedFilters={setCheckedFilters}></Facets>
         </div>
         {body}
