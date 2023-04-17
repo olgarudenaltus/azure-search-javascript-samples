@@ -69,16 +69,16 @@ module.exports = async function (context, req) {
         }
 
         var checkedFiltersFormatted;
-
+        // "\"Roach Motel\" for phrase match
         if (checkedFilters.length !==0 && q==="*"){
-            checkedFiltersFormatted = "'"+checkedFilters.join("'+'")+"'"
+            checkedFiltersFormatted = "'\\'"+checkedFilters.join("'\\'+'\\'")+"\\'"
             q = checkedFiltersFormatted
         }
         else if (checkedFilters.length ===0){
-            q = q
+            q = "'"+q+"'"
         }
         else if (checkedFilters.length !==0 && q!=="*"){
-            checkedFiltersFormatted = "'"+checkedFilters.join("'+'")+"'"
+            checkedFiltersFormatted = "'\\'"+checkedFilters.join("'\\'+'\\'")+"\\'"
             q = "'"+q+"'" + "+" + checkedFiltersFormatted
         }
 
