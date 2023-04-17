@@ -1,5 +1,9 @@
  {
     "routes": [
+      {
+        "route": "/*",
+        "allowedRoles": ["anonymous", "authenticated"]
+      }
     ],
     "auth": {
       "identityProviders": {
