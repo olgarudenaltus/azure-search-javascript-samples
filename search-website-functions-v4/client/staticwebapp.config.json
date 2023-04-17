@@ -1,11 +1,6 @@
 {
     "routes": [
         {
-            "route": "/.auth/login/aad",
-            "allowedRoles": ["anonymous", "authenticated"],
-            "statusCode": 404
-        },
-        {
             "route": "/*",
             "allowedRoles": ["anonymous"]
         }
