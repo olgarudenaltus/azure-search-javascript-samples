@@ -74,6 +74,9 @@ module.exports = async function (context, req) {
             checkedFiltersFormatted = "'\\'"+checkedFilters.join("'\\'+'\\'")+"\\'"
             q = checkedFiltersFormatted
         }
+        else if (checkedFilters.length ===0 && q==="*"){
+            q = "*"
+        }
         else if (checkedFilters.length ===0){
             q = "'"+q+"'"
         }
