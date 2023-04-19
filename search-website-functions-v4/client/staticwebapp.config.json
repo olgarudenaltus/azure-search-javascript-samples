@@ -1,10 +1,21 @@
 {
     "routes": [
         {
+            "route": "/.auth/login/aad",
+            "allowedRoles": ["anonymous", "authenticated"],
+            "statusCode": 404
+        },
+        {
             "route": "/*",
             "allowedRoles": ["anonymous"]
         }
     ],
+    "responseOverrides": {
+        "401": {
+            "statusCode": 302,
+            "redirect": "/.auth/login/aad"
+        }
+    },
     "auth": {
       "identityProviders": {
         "azureActiveDirectory": {
