@@ -1,0 +1,34 @@
+.search-info {
+    margin: 20px auto;
+    max-width: 80%;
+    display: block;
+}
+
+.info-paragraph{
+    margin-bottom: 10px;
+}
+
+.issues-block{
+    margin-top: 20px;
+}
+
+.issues-block-inner{
+    padding:30px;
+}
+
+.logo {
+    height: 12em;
+    width: auto;
+    display:block;
+    margin: auto auto 0;
+}
+
+.poweredby {
+    text-align: center;
+    margin-bottom: 5vh;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+}
