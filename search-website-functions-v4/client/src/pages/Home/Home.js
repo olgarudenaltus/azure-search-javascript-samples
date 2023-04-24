@@ -5,7 +5,7 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 
 import "./Home.css";
 import "../../pages/Search/Search.css";
-import logo from '../../images/CogSearchIcon-1.png';
+import logo from '../../images/CogSearchIcon-1.gif';
 
 export default function Home() {
   const navigate = useNavigate();
