@@ -13,8 +13,8 @@ export default function SearchInfo() {
         <div className="row">
           <div class="card border-0">
             <div class="card-body">
-              <div class="alert alert-warning" role="alert">
-                Universal Search is a pre-relase and is currently operating in a beta mode.
+              <div class="alert alert-danger" role="alert">
+                Universal Search is a pre-relase and is currently operating in a beta mode. Bugs and errors are common.
               </div>
             </div>
           </div>
