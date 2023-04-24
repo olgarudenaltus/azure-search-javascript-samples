@@ -24,7 +24,7 @@ export default function Result(props) {
                 <p class="text-muted mb-1" style={{'font-size':'0.9em'}}>{props.document.fullpath}</p>
             </a> */}
             {/* <a href={"localexplorer:"+props.document.props.document.metadata_spo_item_path.substr(props.document.metadata_spo_item_path.indexOf(":/"), props.document.metadata_spo_item_path.lastIndexOf("/"))}></a> */}
-            <h5 style={{'overflow':'hidden','white-space':'nowrap'}} class="card-title"><a class = "text-decoration-none" href={"localexplorer:W:"+props.document.metadata_spo_item_path.substr(props.document.metadata_spo_item_path.indexOf(":/")+1, props.document.metadata_spo_item_path.lastIndexOf("/"))}>{props.document.metadata_spo_item_name}</a></h5>
+            <h5 title="Click to opean a file" style={{'overflow':'hidden','white-space':'nowrap'}} class="card-title"><a class = "text-decoration-none" href={"localexplorer:W:"+props.document.metadata_spo_item_path.substr(props.document.metadata_spo_item_path.indexOf(":/")+1, props.document.metadata_spo_item_path.lastIndexOf("/"))}>{props.document.metadata_spo_item_name}</a></h5>
             {/* <h5 style={{'overflow':'hidden','white-space':'nowrap'}} class="card-title"><a class = "text-decoration-none" href={"localexplorer:"+props.document.fullpath.substr(0, props.document.fullpath.lastIndexOf("\\"))}>{props.document.metadata_storage_name}</a></h5> */}
             {/* <h5 style={{'overflow':'hidden','white-space':'nowrap'}} class="card-title"><a class = "text-decoration-none" href={"localexplorer:"+props.document.fullpath.substr(0, props.document.fullpath.lastIndexOf("\\"))}>{props.document.metadata_storage_name}</a> <span class="text-muted mb-1" style={{'font-size':'0.85em'}}><a class ="text-muted mb-1 text-decoration-none" href={"localexplorer:"+props.document.fullpath.substr(0, props.document.fullpath.lastIndexOf("\\"))}>({props.document.fullpath})</a></span></h5> */}
             <div class='d-flex align-content-around flex-wrap search-result'>
@@ -45,7 +45,7 @@ export default function Result(props) {
             <div class="col-12">
                     <div class="d-flex justify-content-start">
                         <span class="me-2">PATH:</span>
-                        <span class="text-muted mx-2"><a href={"localexplorer:W:"+props.document.metadata_spo_item_path.substr(0, props.document.metadata_spo_item_path.lastIndexOf("/")).substr(props.document.metadata_spo_item_path.indexOf(":/")+1, props.document.metadata_spo_item_path.lastIndexOf("/"))}>
+                        <span title="Click to navigate to a folder" class="text-muted mx-2"><a href={"localexplorer:W:"+props.document.metadata_spo_item_path.substr(0, props.document.metadata_spo_item_path.lastIndexOf("/")).substr(props.document.metadata_spo_item_path.indexOf(":/")+1, props.document.metadata_spo_item_path.lastIndexOf("/"))}>
                 <p class="text-muted mb-1" style={{'font-size':'0.9em'}}>{"W:"+props.document.metadata_spo_item_path.substr(0, props.document.metadata_spo_item_path.lastIndexOf("/")).substr(props.document.metadata_spo_item_path.indexOf(":/")+1, props.document.metadata_spo_item_path.lastIndexOf("/"))}</p>
             </a></span>
                     </div>
@@ -55,7 +55,7 @@ export default function Result(props) {
                         <span class="me-2">FILE:</span>
                         <span class="text-muted mx-2">type:</span> <span>{props.document.metadata_spo_item_extension} </span>
                         <span class="text-muted mx-2">size: </span><span>{(props.document.metadata_spo_item_size/100000).toFixed(2)}MB </span>
-                        <span class="text-muted mx-2">last updated:  </span><span>{props.document.metadata_spo_item_last_modified.substring(0,10)} </span>
+                        <span title="Added to SharePoint date" class="text-muted mx-2">last updated:  </span><span>{props.document.metadata_spo_item_last_modified.substring(0,10)} </span>
                     </div>
                 </div>
                 <div class="col-7">
