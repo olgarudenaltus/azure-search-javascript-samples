@@ -19,8 +19,14 @@ export default function AppHeaderAuth() {
     let clientPrincipal = (user && user.clientPrincipal) || null,
         userDetails     = (clientPrincipal && clientPrincipal.userDetails) || null;
 
+    let userGroups = (clientPrincipal && clientPrincipal.groups) || null;
+
     if (userDetails) {
       html = `${userDetails} | <a href="/.auth/logout" class="auth-link">Sign Out</a>`;
+    }
+
+    if (userGroups) {
+      console.log("User groups:", userGroups);
     }
 
     authElement.innerHTML = html;
