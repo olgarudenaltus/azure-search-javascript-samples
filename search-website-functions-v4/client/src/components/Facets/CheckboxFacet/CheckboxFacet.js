@@ -32,14 +32,25 @@ export default function CheckboxFacet(props) {
 
 
     const checkboxes = props.values.map(facetValue => {
-
-        // let isSelected = props.selectedFacets.some(facet => facet.value === facetValue.value);
-        let isSelected = props.checkedFilters.some(f => f==facetValue.value);
+        let isSelected;
+        
+        if (facetValue.value == "Y"){
+            isSelected = props.checkedFilters.some(f => f=="b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KnkfD-Dh--QbgG1RLg5ES_");
+        }
+        else if(facetValue.value == "W"){
+            isSelected = props.checkedFilters.some(f => f=="b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_JgIzt0vFmoQ65pvesri2Xk");
+        }
+        else {
+            isSelected = props.checkedFilters.some(f => f==facetValue.value);
+        }
+        // let isSelected = props.checkedFilters.some(f => f==facetValue.value);
         // console.log(isSelected)
         // let isSelected = document.getElementById({facetValue}).checked;
         // let isSelected = props.selectedFacets.some(facet => facet.value === facetValue.value);
 
         // console.log(props.values)
+
+        // let isSelected = props.selectedFacets.some(facet => facet.value === facetValue.value);
         
         return (
             <FacetValueListItem dense disableGutters id={facetValue.value}>
@@ -58,7 +69,7 @@ export default function CheckboxFacet(props) {
                     onClick= {
                         isSelected ? 
                         () => {props.removeFilterValue(props.name,facetValue.value);console.log("removed: " + facetValue.value);} :
-                        () => {props.addFilterValue(props.name,facetValue.value);console.log("added: " + facetValue.value);console.log(isSelected);document.getElementById("selectedFilters").innerHTML=console.log(props.checkedFilters);}
+                        () => {props.addFilterValue(props.name,facetValue.value);console.log("added: " + facetValue.value);}
                     }
                 />
                 {/* <ListItemText primary={facetValue.value.slice(-1) === '0'?facetValue.value.substring(0, facetValue.value.indexOf('.'))+ " (" + facetValue.count + ")":facetValue.value + " (" + facetValue.count + ")"}/> */}

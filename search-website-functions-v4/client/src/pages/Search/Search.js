@@ -29,7 +29,6 @@ export default function Search() {
   const [ facets, setFacets ] = useState({});
   const [ isLoading, setIsLoading ] = useState(true);
   const [ checkedFilters, setCheckedFilters] = useState([]);
-  const [ driveFilter, setDriveFilter] = useState([])
 
   let resultsPerPage = top;
   
@@ -42,8 +41,7 @@ export default function Search() {
       skip: skip,
       checkedFilters: checkedFilters,
       // checkedFilters: !checkedFilters?"":"'" + checkedFilters.join("+") + "'",
-      filters: filters,
-      driveFilter: driveFilter
+      filters: filters
     };
 
     console.log(body)
@@ -76,7 +74,7 @@ export default function Search() {
             setIsLoading(false);
         });
     
-  }, [q, top, skip, filters, checkedFilters, currentPage, driveFilter]);
+  }, [q, top, skip, filters, checkedFilters, currentPage]);
 
   // pushing the new search term to history when q is updated
   // allows the back button to work as expected when coming back from the details page
@@ -84,7 +82,6 @@ export default function Search() {
     navigate('/search?q=' + q);  
     setCurrentPage(1);
     setFilters([]);
-    setDriveFilter([]);
     setCheckedFilters([]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [q]);
@@ -125,7 +122,7 @@ export default function Search() {
           <div>
             
           </div>
-          <Facets facets={facets} driveFilter = {driveFilter} filters={filters} setFilters={setFilters} checkedFilters={checkedFilters} setCheckedFilters={setCheckedFilters}></Facets>
+          <Facets facets={facets} filters={filters} setFilters={setFilters} checkedFilters={checkedFilters} setCheckedFilters={setCheckedFilters}></Facets>
         </div>
         {body}
       </div>

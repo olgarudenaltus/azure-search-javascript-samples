@@ -87,10 +87,10 @@ module.exports = async function (context, req) {
               }
             });
           
-            const str1 = "\"\\"+arrWithSpace.join("'\\'+'\\'")+"\\";
+            const str1 = "\"\\\""+arrWithSpace.join("\\\"\"+\"\\\"")+"\\\"\"";
             const str2 = "\""+arrWithoutSpace.join("\"+\"")+"\"";
           
-            return str1 + str2;
+            return str1 +"+"+ str2;
 }
 
         var checkedFiltersFormatted;

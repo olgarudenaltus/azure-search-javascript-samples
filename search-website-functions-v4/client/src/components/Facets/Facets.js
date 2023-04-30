@@ -41,33 +41,24 @@ export default function Facets(props) {
 
     // add drive filter
 
-    function addDriveFilter(drive){
-        const newDriveFilters = props.driveFilter.concat(drive);
-        props.setDriveFilter(newDriveFilters)
-    }
-
-    function removeDriveFilter(drive){
-        const newDriveFilters = props.driveFilter.filter((item) => item !== drive);
-        props.setDriveFilter(newDriveFilters)
-    }
-
 
     function addFilterValue(name,value){
         console.log("Adding")
         console.log(name,value)
         console.log(props.checkedFilters)
         if (value=="Y"){
-            const newFilters = props.filters.concat("b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KnkfD-Dh--QbgG1RLg5ES_");
+            const newFilters = props.checkedFilters.concat("b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KnkfD-Dh--QbgG1RLg5ES_");
             props.setCheckedFilters(newFilters);
         }
         else if (value=="W"){
-            const newFilters = props.filters.concat("b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_JgIzt0vFmoQ65pvesri2Xk");
+            const newFilters = props.checkedFilters.concat("b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_JgIzt0vFmoQ65pvesri2Xk");
             props.setCheckedFilters(newFilters);
         }
         else {
-            const newFilters = props.filters.concat(value);
+            const newFilters = props.checkedFilters.concat(value);
             props.setCheckedFilters(newFilters);
         }
+        console.log(props.checkedFilters)
         // const newFilters = props.checkedFilters.concat(value);
         // console.log(newFilters)
         // props.setCheckedFilters(newFilters)
@@ -84,11 +75,11 @@ export default function Facets(props) {
         console.log(name,value)
         console.log(props.checkedFilters)
 
-        if (value=="Y"){
+        if (value=="Y" || value == "b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KnkfD-Dh--QbgG1RLg5ES_"){
             const newFilters = props.checkedFilters.filter((item) => item !== "b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KnkfD-Dh--QbgG1RLg5ES_");
             props.setCheckedFilters(newFilters);
         }
-        else if (value=="W"){
+        else if (value=="W" || value=="b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_JgIzt0vFmoQ65pvesri2Xk"){
             const newFilters = props.checkedFilters.filter((item) => item !== "b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_JgIzt0vFmoQ65pvesri2Xk");
             props.setCheckedFilters(newFilters);
         }
@@ -96,7 +87,7 @@ export default function Facets(props) {
             const newFilters = props.checkedFilters.filter((item) => item !== value);
             props.setCheckedFilters(newFilters);
         }
-
+        console.log(props.checkedFilters)
         // const newFilters = props.checkedFilters.filter((item) => item !== value);
         // props.setCheckedFilters(newFilters);
         // console.log(newFilters)
@@ -138,9 +129,6 @@ export default function Facets(props) {
                 name={key}
                 addFilterValue={addFilterValue}
                 removeFilterValue={removeFilterValue}
-                addDriveFilter={addDriveFilter}
-                removeDriveFilter={removeDriveFilter}
-                driveFilter={props.driveFilter}
                 values={facetsStatic.facets[key]}
                 checkedFilters={props.checkedFilters}
                 selectedFacets={props.filters.filter( f => f.field === key)}
@@ -173,17 +161,36 @@ export default function Facets(props) {
     //   });
 
     const selectedFilters = props.checkedFilters.map((item, index) => 
-        <li>
-            <span key = {index} class="badge rounded-pill text-bg-secondary">{item}</span>
-        </li>
+        {
+            if (item=="b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KnkfD-Dh--QbgG1RLg5ES_"){
+                return(
+                <li class="list-group-item border-0 p-1">
+                    <span key = {index} class="badge rounded-pill text-bg-secondary">Y</span>
+                </li>)
+            }
+            else if (item=="b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_JgIzt0vFmoQ65pvesri2Xk"){
+                return(<li class="list-group-item border-0 p-1">
+                    <span key = {index} class="badge rounded-pill text-bg-secondary">W</span>
+                </li>)
+            }
+            else {
+                return(<li class="list-group-item border-0 p-1">
+                    <span key = {index} class="badge rounded-pill text-bg-secondary">{item}</span>
+                </li>)
+            }
+        }
     );
 
+
+
+    // "Y"  "b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KnkfD-Dh--QbgG1RLg5ES_"
+    // "W" "b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_JgIzt0vFmoQ65pvesri2Xk"
 
     return (
         <div id="facetPanel" className="box">
             <div className="facetbox">
-                <div id="clearFilters">
-                    <ul className="filterlist">
+                <div id="clearFilters" className="m-3">
+                    <ul className="filterlist list-group list-group-horizontal">
                         {selectedFilters}
                     </ul>
                 </div>
