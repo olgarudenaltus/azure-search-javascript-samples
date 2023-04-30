@@ -43,10 +43,21 @@ export default function App() {
     }
   }
 
+  // Fetch user groups
+  async function fetchUserGroups(){
+    const userId = user.clientPrincipal.userId
+    const response = await fetch(`https://graph.microsoft.com/v1.0/users/${userId}/memberOf`)
+    const userGroups = await response.json();
+    if (userGroups){
+      console.log(userGroups)
+    }
+  }
+
   // React Hook: useEffect when component changes
   // Empty array ensure this only runs once on mount
   useEffect(() => {
     fetchAuth()
+    fetchUserGroups()
   }, []);
 
   const router = createHashRouter(
