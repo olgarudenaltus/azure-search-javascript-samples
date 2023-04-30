@@ -8,6 +8,7 @@ export default function AppHeaderAuth() {
   const user = useAuth();
   
   console.log(`user = ${JSON.stringify(user)}`);
+  console.log(user)
 
   // Dynamically update auth div based on user context
   const authElement = document.querySelector('.auth');
@@ -23,10 +24,6 @@ export default function AppHeaderAuth() {
 
     if (userDetails) {
       html = `${userDetails} | <a href="/.auth/logout" class="auth-link">Sign Out</a>`;
-    }
-
-    if (userGroups) {
-      console.log("User groups:", userGroups);
     }
 
     authElement.innerHTML = html;

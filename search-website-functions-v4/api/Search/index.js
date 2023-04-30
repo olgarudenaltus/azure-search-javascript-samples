@@ -8,6 +8,11 @@ const client = new SearchClient(
     new AzureKeyCredential(CONFIG.SearchApiKey)
 );
 
+// 1. When drive filter is applied filter results by metadata_spo_library_id (filter out results on the app by metadata_spo_item_path)
+// 2. Change URL links when pointing to FSx folder
+// 3. Combine client lists - done
+// 4. 
+
 
 
 // creates filters in odata syntax
@@ -68,10 +73,32 @@ module.exports = async function (context, req) {
             q = "*";
         }
 
+        // s.indexOf(' ') >= 0;
+        // if has space join - one way, if no space - another
+        function splitJoin(arr) {
+            const arrWithSpace = [];
+            const arrWithoutSpace = [];
+            
+            arr.forEach(str => {
+              if (str.includes(' ')) {
+                arrWithSpace.push(str);
+              } else {
+                arrWithoutSpace.push(str);
+              }
+            });
+          
+            const str1 = "\"\\"+arrWithSpace.join("'\\'+'\\'")+"\\";
+            const str2 = "\""+arrWithoutSpace.join("\"+\"")+"\"";
+          
+            return str1 + str2;
+}
+
         var checkedFiltersFormatted;
         // "\"Roach Motel\" for phrase match
         if (checkedFilters.length !==0 && q==="*"){
-            checkedFiltersFormatted = "'\\'"+checkedFilters.join("'\\'+'\\'")+"\\'"
+            checkedFiltersFormatted = splitJoin(checkedFilters)
+            // checkedFiltersFormatted = "\""+joinWithSeparator(checkedFilters, "\\+'\\'", "+")+"\""
+            // checkedFiltersFormatted = "'\\'"+checkedFilters.join("'\\'+'\\'")+"\\'"
             q = checkedFiltersFormatted
         }
         else if (checkedFilters.length ===0 && q==="*"){
@@ -81,7 +108,9 @@ module.exports = async function (context, req) {
             q = "'"+q+"'"
         }
         else if (checkedFilters.length !==0 && q!=="*"){
-            checkedFiltersFormatted = "'\\'"+checkedFilters.join("'\\'+'\\'")+"\\'"
+            checkedFiltersFormatted = splitJoin(checkedFilters)
+            // checkedFiltersFormatted = "\""+joinWithSeparator(checkedFilters, "'\\'+'\\'", "+")+"\""
+            // checkedFiltersFormatted = "'\\'"+checkedFilters.join("'\\'+'\\'")+"\\'"
             q = "'"+q+"'" + "+" + checkedFiltersFormatted
         }
 

@@ -55,13 +55,13 @@ export default function Result(props) {
                         <span class="me-2">FILE:</span>
                         <span class="text-muted mx-2">type:</span> <span>{props.document.metadata_spo_item_extension} </span>
                         <span class="text-muted mx-2">size: </span><span>{(props.document.metadata_spo_item_size/100000).toFixed(2)}MB </span>
-                        <span title="Added to SharePoint date" class="text-muted mx-2">last updated:  </span><span>{props.document.metadata_spo_item_last_modified.substring(0,10)} </span>
+                        <span class="text-muted mx-2">last updated:  </span><span title="Added to SharePoint date">{props.document.metadata_spo_item_last_modified.substring(0,10)} </span>
                     </div>
                 </div>
                 <div class="col-7">
                     <div class="d-flex justify-content-start">
                         <span class="me-2">PROP:</span>
-                        <span class="text-muted mx-2">drive: </span><span>W</span>
+                        <span class="text-muted mx-2">drive: </span><span>{props.document.metadata_spo_library_id=="b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KnkfD-Dh--QbgG1RLg5ES_"?"Y":"W"}</span>
                         {/* <span class="text-muted mx-2">year:  </span><span>{props.document.year==="nan"?"": props.document.year.substring(0,4)} </span>
                         <span class="text-muted mx-2">state: </span><span>{props.document.state==="nan"?"":props.document.state}</span> */}
                     </div>

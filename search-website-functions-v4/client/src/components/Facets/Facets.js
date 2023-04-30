@@ -6,7 +6,16 @@ import "./Facets.css";
 
 export default function Facets(props) {
 
-    
+    const driveIDs = [
+        {
+            driveName:"W",
+            driveID:"b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_JgIzt0vFmoQ65pvesri2Xk"
+        },
+        {
+            driveName:"Y",
+            driveID:"b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KnkfD-Dh--QbgG1RLg5ES_"
+        }
+    ]
 
     function mapFacetName(facetName) {
         facetName = facetName==="metadata_spo_item_extension"?"File extension":facetName
@@ -20,6 +29,7 @@ export default function Facets(props) {
     }
 
     function addFilter(name, value) {
+        
         const newFilters = props.filters.concat({ field: name, value: value });
         props.setFilters(newFilters);
     }
@@ -29,15 +39,39 @@ export default function Facets(props) {
         props.setFilters(newFilters);
     }
 
+    // add drive filter
+
+    function addDriveFilter(drive){
+        const newDriveFilters = props.driveFilter.concat(drive);
+        props.setDriveFilter(newDriveFilters)
+    }
+
+    function removeDriveFilter(drive){
+        const newDriveFilters = props.driveFilter.filter((item) => item !== drive);
+        props.setDriveFilter(newDriveFilters)
+    }
+
+
     function addFilterValue(name,value){
         console.log("Adding")
         console.log(name,value)
         console.log(props.checkedFilters)
-
-        const newFilters = props.checkedFilters.concat(value);
-        console.log(newFilters)
-        props.setCheckedFilters(newFilters)
-        console.log(props.checkedFilters)
+        if (value=="Y"){
+            const newFilters = props.filters.concat("b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KnkfD-Dh--QbgG1RLg5ES_");
+            props.setCheckedFilters(newFilters);
+        }
+        else if (value=="W"){
+            const newFilters = props.filters.concat("b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_JgIzt0vFmoQ65pvesri2Xk");
+            props.setCheckedFilters(newFilters);
+        }
+        else {
+            const newFilters = props.filters.concat(value);
+            props.setCheckedFilters(newFilters);
+        }
+        // const newFilters = props.checkedFilters.concat(value);
+        // console.log(newFilters)
+        // props.setCheckedFilters(newFilters)
+        // console.log(props.checkedFilters)
         // props.checkedFilters
         // props.checkedFilters.terms = Object.assign(props.checkedFilters.terms,value)
         // props.checkedFilters =  props.checkedFilters +"+"+value; 
@@ -50,9 +84,22 @@ export default function Facets(props) {
         console.log(name,value)
         console.log(props.checkedFilters)
 
-        const newFilters = props.checkedFilters.filter((item) => item !== value);
-        props.setCheckedFilters(newFilters);
-        console.log(newFilters)
+        if (value=="Y"){
+            const newFilters = props.checkedFilters.filter((item) => item !== "b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KnkfD-Dh--QbgG1RLg5ES_");
+            props.setCheckedFilters(newFilters);
+        }
+        else if (value=="W"){
+            const newFilters = props.checkedFilters.filter((item) => item !== "b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_JgIzt0vFmoQ65pvesri2Xk");
+            props.setCheckedFilters(newFilters);
+        }
+        else {
+            const newFilters = props.checkedFilters.filter((item) => item !== value);
+            props.setCheckedFilters(newFilters);
+        }
+
+        // const newFilters = props.checkedFilters.filter((item) => item !== value);
+        // props.setCheckedFilters(newFilters);
+        // console.log(newFilters)
 
     }
 
@@ -91,6 +138,9 @@ export default function Facets(props) {
                 name={key}
                 addFilterValue={addFilterValue}
                 removeFilterValue={removeFilterValue}
+                addDriveFilter={addDriveFilter}
+                removeDriveFilter={removeDriveFilter}
+                driveFilter={props.driveFilter}
                 values={facetsStatic.facets[key]}
                 checkedFilters={props.checkedFilters}
                 selectedFacets={props.filters.filter( f => f.field === key)}
@@ -122,14 +172,20 @@ export default function Facets(props) {
     //     </li>);
     //   });
 
+    const selectedFilters = props.checkedFilters.map((item, index) => 
+        <li>
+            <span key = {index} class="badge rounded-pill text-bg-secondary">{item}</span>
+        </li>
+    );
+
 
     return (
         <div id="facetPanel" className="box">
             <div className="facetbox">
                 <div id="clearFilters">
-                {/* <ul className="filterlist">
-                    {filters}
-                </ul> */}
+                    <ul className="filterlist">
+                        {selectedFilters}
+                    </ul>
                 </div>
                 <FacetList component="nav" className="listitem" >
                     {facets}
