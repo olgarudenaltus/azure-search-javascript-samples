@@ -21,12 +21,23 @@ export default function SearchInfo() {
         </div>
         <div className="row">
           <div className="info-paragraph">
+            <p class="h3">Getting Started</p>
+            <p>
+              Universal Search runs in the Google Chrome browser and you will need to install the <a href="https://chrome.google.com/webstore/detail/local-explorer-open-file/eokekhgpaakbkfkmjjcbffibkencdfkl">Local Explorer extension</a> in order to open the files shown in your search results. </p>
+            <ul>
+              <li>Click the “Add to Chrome” button and then “Add Extension” next. </li>
+              <li>Note: You may be prompted once the Local Explorer extension is installed to also install an Integration Module. You do not need to install the Integration Module. </li>
+            </ul>
+          </div>
+        </div>
+        <div className="row">
+          <div className="info-paragraph">
             <p class="h3">What is Universal Search?</p>
             <p>Universal Search is an Altus web-based application that allows users to search for and locate files in a centralized location. Powered by Azure cognitive search, Universal Search capabilities extend beyond those of a classic search engine by combining indexing technology with powerful AI technology to bring numerous data sources together to extract relevant information quickly.  </p>
           </div>
           <div className="info-paragraph">
             <p class="h3">What is included in Universal Search?</p>
-            <p>This first initial release of Universal Search includes the files from the Tax US “W” drive only. Subsequent releases will provide search capabilities over the Tax US “Y” and “T” drive – stay tuned for an announcement when those become available.</p>
+            <p>This first release of Universal Search includes files from the Tax US “W” and “Y” drive only. Subsequent releases will provide search capabilities over the “T” drive, and additional drives and repositories will be included throughout the year.</p>
           </div>
           <div class="card border-0 issues-block">
             <div class="card-footer issues-block-inner">
