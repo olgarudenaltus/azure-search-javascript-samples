@@ -51,9 +51,22 @@ export default function Search() {
     // const str1 = "\"\\\""+arrWithSpace.join("\\\"\"|\"\\\"")+"\\\"\"";
     // const str2 = "\""+arrWithoutSpace.join("\"|\"")+"\"";
 
-    console.log("Logging split join: "+ str1 +"|"+ str2)
+    if (str1=="" && str2==""){
+      return ""
+    }
+    else if (str1==""){
+      return "("+str2+")"
+    }
+    else if (str2==""){
+      return "("+str1+")"
+    }
+    else {
+      return "("+str1 + "|" + str2+")"
+    }
+
+    // console.log("Logging split join: "+ str1 +"|"+ str2)
   
-    return str1 +"|"+ str2;
+    // return str1 +"|"+ str2;
   }
 
   function constructFilterQuery(filtersMap) {
@@ -119,11 +132,11 @@ export default function Search() {
   useEffect(() => {
     navigate('/search?q=' + q);  
     setCurrentPage(1);
-    setFilters([]);
-    setCheckedFilters([]);
-    setCheckedFiltersMap([]);
+    setFilters(filters);
+    setCheckedFilters(checkedFilters);
+    setCheckedFiltersMap(checkedFiltersMap)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [q]);
+  }, [q,filters,checkedFilters,checkedFiltersMap]);
 
 
   let postSearchHandler = (searchTerm) => {
