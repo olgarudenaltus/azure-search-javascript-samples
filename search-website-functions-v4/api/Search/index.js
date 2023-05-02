@@ -55,10 +55,12 @@ const readFacets = (facetString) => {
 module.exports = async function (context, req) {
 
     try {
-
+        console.log(req.body)
         // Reading inputs from HTTP Request
         // const checkedFilters = " + NC + CVS"
         const checkedFilters = req.body.checkedFilters;
+        const checkedFiltersMap = req.body.checkedFiltersMap;
+        const filterQuery = req.body.filterQuery;
         let q = (req.query.q || (req.body && req.body.q));
         const top = (req.query.top || (req.body && req.body.top));
         const skip = (req.query.skip || (req.body && req.body.skip));
@@ -66,6 +68,8 @@ module.exports = async function (context, req) {
         const facets = readFacets("metadata_spo_item_extension");
 
         console.log(q)
+        console.log(checkedFilters)
+        console.log(checkedFiltersMap)
 
 
         // If search term is empty, search everything
@@ -73,30 +77,20 @@ module.exports = async function (context, req) {
             q = "*";
         }
 
+        // client ['AARP', 'AC&T Co, Inc']
+        // drive ['W']
+
         // s.indexOf(' ') >= 0;
         // if has space join - one way, if no space - another
-        function splitJoin(arr) {
-            const arrWithSpace = [];
-            const arrWithoutSpace = [];
-            
-            arr.forEach(str => {
-              if (str.includes(' ')) {
-                arrWithSpace.push(str);
-              } else {
-                arrWithoutSpace.push(str);
-              }
-            });
-          
-            const str1 = "\"\\\""+arrWithSpace.join("\\\"\"+\"\\\"")+"\\\"\"";
-            const str2 = "\""+arrWithoutSpace.join("\"+\"")+"\"";
-          
-            return str1 +"+"+ str2;
-}
 
-        var checkedFiltersFormatted;
+        const checkedFiltersFormatted = filterQuery
+
+        console.log("Logging filters map:"+checkedFiltersFormatted)
+
+        
         // "\"Roach Motel\" for phrase match
         if (checkedFilters.length !==0 && q==="*"){
-            checkedFiltersFormatted = splitJoin(checkedFilters)
+            // const checkedFiltersFormatted = constructFilterQuery(checkedFiltersMap)
             // checkedFiltersFormatted = "\""+joinWithSeparator(checkedFilters, "\\+'\\'", "+")+"\""
             // checkedFiltersFormatted = "'\\'"+checkedFilters.join("'\\'+'\\'")+"\\'"
             q = checkedFiltersFormatted
@@ -108,7 +102,7 @@ module.exports = async function (context, req) {
             q = "'"+q+"'"
         }
         else if (checkedFilters.length !==0 && q!=="*"){
-            checkedFiltersFormatted = splitJoin(checkedFilters)
+            // const checkedFiltersFormatted = constructFilterQuery(checkedFiltersMap)
             // checkedFiltersFormatted = "\""+joinWithSeparator(checkedFilters, "'\\'+'\\'", "+")+"\""
             // checkedFiltersFormatted = "'\\'"+checkedFilters.join("'\\'+'\\'")+"\\'"
             q = "'"+q+"'" + "+" + checkedFiltersFormatted

@@ -28,9 +28,45 @@ export default function Search() {
   const [ filters, setFilters ] = useState([]);
   const [ facets, setFacets ] = useState({});
   const [ isLoading, setIsLoading ] = useState(true);
-  const [ checkedFilters, setCheckedFilters] = useState([]);
+  const [ checkedFilters, setCheckedFilters] = useState([]); // list of applied filters
+  const [ checkedFiltersMap, setCheckedFiltersMap] = useState([]); //list of dictionaries: "filterName":["filterValue1","filterValue2"]
 
   let resultsPerPage = top;
+
+  function splitJoin(arr) {
+    const arrWithSpace = [];
+    const arrWithoutSpace = [];
+    
+    arr.forEach(str => {
+      if (str.includes(' ')) {
+        arrWithSpace.push(str);
+      } else {
+        arrWithoutSpace.push(str);
+      }
+    });
+
+    const str1 = arrWithSpace.length==0?"":"\"\\\""+arrWithSpace.join("\\\"\"|\"\\\"")+"\\\"\"";
+    const str2 = arrWithoutSpace.length==0?"":"\""+arrWithoutSpace.join("\"|\"")+"\""
+  
+    // const str1 = "\"\\\""+arrWithSpace.join("\\\"\"|\"\\\"")+"\\\"\"";
+    // const str2 = "\""+arrWithoutSpace.join("\"|\"")+"\"";
+
+    console.log("Logging split join: "+ str1 +"|"+ str2)
+  
+    return str1 +"|"+ str2;
+  }
+
+  function constructFilterQuery(filtersMap) {
+      const queryString = Object.entries(filtersMap).map(([key, value]) => {
+          return `${splitJoin(value)}`;
+      });
+      
+      console.log("Logging construct filter query: " + queryString.join('+'))
+      return queryString.join('+');
+  }
+
+  const filterQuery = constructFilterQuery(checkedFiltersMap)
+
   
   useEffect(() => {
     setIsLoading(true);
@@ -40,6 +76,8 @@ export default function Search() {
       top: top,
       skip: skip,
       checkedFilters: checkedFilters,
+      checkedFiltersMap: checkedFiltersMap,
+      filterQuery: filterQuery,
       // checkedFilters: !checkedFilters?"":"'" + checkedFilters.join("+") + "'",
       filters: filters
     };
@@ -74,7 +112,7 @@ export default function Search() {
             setIsLoading(false);
         });
     
-  }, [q, top, skip, filters, checkedFilters, currentPage]);
+  }, [q, top, skip, filters, checkedFilters, currentPage, checkedFiltersMap]);
 
   // pushing the new search term to history when q is updated
   // allows the back button to work as expected when coming back from the details page
@@ -83,6 +121,7 @@ export default function Search() {
     setCurrentPage(1);
     setFilters([]);
     setCheckedFilters([]);
+    setCheckedFiltersMap([]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [q]);
 
@@ -122,7 +161,7 @@ export default function Search() {
           <div>
             
           </div>
-          <Facets facets={facets} filters={filters} setFilters={setFilters} checkedFilters={checkedFilters} setCheckedFilters={setCheckedFilters}></Facets>
+          <Facets facets={facets} filters={filters} setFilters={setFilters} checkedFilters={checkedFilters} setCheckedFilters={setCheckedFilters} checkedFiltersMap={checkedFiltersMap} setCheckedFiltersMap={setCheckedFiltersMap}></Facets>
         </div>
         {body}
       </div>

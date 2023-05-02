@@ -40,6 +40,14 @@ export default function Facets(props) {
     }
 
     // add drive filter
+    function formatDrive(driveName){
+        if (driveName=="Y"){
+            return "b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KnkfD-Dh--QbgG1RLg5ES_"
+        }
+        else if (driveName=="W"){
+            return "b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_JgIzt0vFmoQ65pvesri2Xk"
+        }
+    }
 
 
     function addFilterValue(name,value){
@@ -94,6 +102,41 @@ export default function Facets(props) {
 
     }
 
+    function addFilterToMap(name,value){
+        if (name=="drive"){
+            value = formatDrive(value)
+        }
+        const newFiltersMap = props.checkedFiltersMap
+        if (name in newFiltersMap){
+            newFiltersMap[name].push(value)
+        }
+        else {
+            newFiltersMap[name] = [value]
+        }
+        console.log(newFiltersMap)
+
+        for (let key in newFiltersMap) {
+            console.log(key + ': ' + newFiltersMap[key]);
+        }
+
+        console.log(typeof newFiltersMap)
+        Object.entries(newFiltersMap).forEach((prop)=> console.log(prop[1]));
+
+
+        props.setCheckedFiltersMap(newFiltersMap);
+    }
+
+    function removeFilterFromMap(name,value){
+        if (name=="drive"){
+            value = formatDrive(value)
+        }
+        const newFiltersMap = props.checkedFiltersMap
+        newFiltersMap[name] = newFiltersMap[name].filter(item => item !== value)
+        console.log(newFiltersMap)
+        props.setCheckedFiltersMap(newFiltersMap);
+
+    }
+
     const facetsStatic = require('./facets.json');
     console.log(facetsStatic.facets)
     // console.log(props.filters)
@@ -131,6 +174,9 @@ export default function Facets(props) {
                 removeFilterValue={removeFilterValue}
                 values={facetsStatic.facets[key]}
                 checkedFilters={props.checkedFilters}
+                checkedFiltersMap={props.checkedFiltersMap}
+                addFilterToMap={addFilterToMap}
+                removeFilterFromMap={removeFilterFromMap}
                 selectedFacets={props.filters.filter( f => f.field === key)}
               />;
           });

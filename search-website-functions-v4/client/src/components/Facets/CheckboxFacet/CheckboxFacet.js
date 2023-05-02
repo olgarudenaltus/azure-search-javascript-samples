@@ -68,8 +68,8 @@ export default function CheckboxFacet(props) {
                     // onClick = {console.log(facetValue.value)}
                     onClick= {
                         isSelected ? 
-                        () => {props.removeFilterValue(props.name,facetValue.value);console.log("removed: " + facetValue.value);} :
-                        () => {props.addFilterValue(props.name,facetValue.value);console.log("added: " + facetValue.value);}
+                        () => {props.removeFilterValue(props.name,facetValue.value);props.removeFilterFromMap(props.name,facetValue.value);console.log("removed: " + facetValue.value);} :
+                        () => {props.addFilterValue(props.name,facetValue.value);props.addFilterToMap(props.name,facetValue.value);console.log("added: " + facetValue.value);}
                     }
                 />
                 {/* <ListItemText primary={facetValue.value.slice(-1) === '0'?facetValue.value.substring(0, facetValue.value.indexOf('.'))+ " (" + facetValue.count + ")":facetValue.value + " (" + facetValue.count + ")"}/> */}
