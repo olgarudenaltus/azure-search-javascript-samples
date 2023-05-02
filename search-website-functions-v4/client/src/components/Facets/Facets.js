@@ -235,8 +235,8 @@ export default function Facets(props) {
     return (
         <div id="facetPanel" className="box">
             <div className="facetbox">
-                <div id="clearFilters" className="m-3">
-                    <ul className="filterlist list-group list-group-horizontal">
+                <div id="clearFilters" className="">
+                    <ul className="filterlist ps-3 d-flex flex-wrap list-group-horizontal">
                         {selectedFilters}
                     </ul>
                 </div>
