@@ -27,6 +27,7 @@ export default function SearchInfo() {
             <ul>
               <li>Click the “Add to Chrome” button and then “Add Extension” next. </li>
               <li>Note: You may be prompted once the Local Explorer extension is installed to also install an Integration Module. You do not need to install the Integration Module. </li>
+              <li>After successfull instllation go to extension page and make sure that checkbox <i>"Allow access to file URLs"</i> is on.</li>
             </ul>
           </div>
         </div>
