@@ -14,7 +14,7 @@ export default function SearchInfo() {
           <div class="card border-0">
             <div class="card-body">
               <div class="alert alert-danger" role="alert">
-                Universal Search is a pre-relase and is currently operating in a beta mode. Bugs and errors are common.
+                Universal Search is a prerelase and is currently operating in a beta mode. Bugs and errors are common.
               </div>
             </div>
           </div>
