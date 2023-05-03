@@ -33,6 +33,11 @@ export default function AppHeader() {
             </li> */}
           </ul>
         </div>
+        <div class="px-4 bg-warning">
+          <span class="navbar-text text-black lead">
+            UAT
+          </span>
+        </div>
 
 
         <AppHeaderAuth />

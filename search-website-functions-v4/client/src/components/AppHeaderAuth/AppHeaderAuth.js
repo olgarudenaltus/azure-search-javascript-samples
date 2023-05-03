@@ -30,6 +30,6 @@ export default function AppHeaderAuth() {
   }
 
   return (
-    <div className="auth"></div>
+    <div className="auth px-3"></div>
   );
 };
