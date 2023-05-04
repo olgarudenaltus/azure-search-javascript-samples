@@ -25,7 +25,7 @@ export default function SearchInfo() {
             <p>
               Universal Search runs in the Google Chrome browser and you will need to install the Local Explorer extension in order to open the files shown in your search results. </p>
             <ul>
-              <li>Note: You will be prompted, once the Local Explorer extension is installed, to also install an Integration Module. <b>DO NOT install the Integration Module.</b></li>
+              <li>Note: You will be prompted, once the Local Explorer extension is installed, to also install an Integration Module. You need to install the Integration Module.</li>
               <li>After successfull instllation go to extension page and make sure that checkbox <i>"Allow access to file URLs"</i> is on.</li>
               <li>Install <a href="https://chrome.google.com/webstore/detail/local-explorer-open-file/eokekhgpaakbkfkmjjcbffibkencdfkl">Local Explorer</a> extension here.</li>
             </ul>
