@@ -30,7 +30,7 @@ export default function Search() {
   const [ isLoading, setIsLoading ] = useState(true);
   const [ checkedFilters, setCheckedFilters] = useState([]); // list of applied filters
   const [ checkedFiltersMap, setCheckedFiltersMap] = useState([]); //list of dictionaries: "filterName":["filterValue1","filterValue2"]
-
+  
   let resultsPerPage = top;
 
   function splitJoin(arr) {
@@ -69,6 +69,8 @@ export default function Search() {
     // return str1 +"|"+ str2;
   }
 
+  // T drive library id: "b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KQpDYDuHdvSL0JAe7qdEAc"
+
   function constructFilterQuery(filtersMap) {
       const queryString = Object.entries(filtersMap).map(([key, value]) => {
           return `${splitJoin(value)}`;
@@ -78,7 +80,7 @@ export default function Search() {
       return queryString.join('+');
   }
 
-  const filterQuery = constructFilterQuery(checkedFiltersMap)
+  const filterQuery = constructFilterQuery(checkedFiltersMap);
 
   
   useEffect(() => {
@@ -113,17 +115,25 @@ export default function Search() {
         });
     
   }, [q, top, skip, filters, checkedFilters, currentPage, checkedFiltersMap]);
+  
 
   // pushing the new search term to history when q is updated
   // allows the back button to work as expected when coming back from the details page
   useEffect(() => {
-    navigate('/search?q=' + q); 
+    navigate('/search?q=' + q);
     setCurrentPage(1);
     setFilters(filters);
     setCheckedFilters(checkedFilters);
     setCheckedFiltersMap(checkedFiltersMap)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [q,filters,checkedFilters,checkedFiltersMap]);
+  }, [q]);
+
+
+  // bring back to first page
+  useEffect(() => {
+    setCurrentPage(1);
+    setSkip(0);
+  }, [q, filters, checkedFilters, checkedFiltersMap]);
 
 
   let postSearchHandler = (searchTerm) => {
