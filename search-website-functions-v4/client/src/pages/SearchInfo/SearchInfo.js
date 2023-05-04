@@ -23,11 +23,11 @@ export default function SearchInfo() {
           <div className="info-paragraph">
             <p class="h3">Getting Started</p>
             <p>
-              Universal Search runs in the Google Chrome browser and you will need to install the <a href="https://chrome.google.com/webstore/detail/local-explorer-open-file/eokekhgpaakbkfkmjjcbffibkencdfkl">Local Explorer extension</a> in order to open the files shown in your search results. </p>
+              Universal Search runs in the Google Chrome browser and you will need to install the Local Explorer extension in order to open the files shown in your search results. </p>
             <ul>
-              <li>Click the “Add to Chrome” button and then “Add Extension” next. </li>
-              <li>Note: You may be prompted once the Local Explorer extension is installed to also install an Integration Module. You do not need to install the Integration Module. </li>
+              <li>Note: You will be prompted, once the Local Explorer extension is installed, to also install an Integration Module. <b>DO NOT install the Integration Module.</b></li>
               <li>After successfull instllation go to extension page and make sure that checkbox <i>"Allow access to file URLs"</i> is on.</li>
+              <li>Install <a href="https://chrome.google.com/webstore/detail/local-explorer-open-file/eokekhgpaakbkfkmjjcbffibkencdfkl">Local Explorer</a> extension here.</li>
             </ul>
           </div>
         </div>

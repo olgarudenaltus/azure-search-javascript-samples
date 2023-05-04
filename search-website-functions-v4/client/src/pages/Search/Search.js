@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import CircularProgress  from '@material-ui/core/CircularProgress';
 import { useLocation, useNavigate } from "react-router-dom";
@@ -97,19 +97,6 @@ export default function Search() {
 
     console.log(body)
 
-    // axios config
-    // axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
-    // axios.defaults.headers.post['Access-Control-Allow-Origin'] ='*';
-    // axios.defaults.headers.post['Access-Control-Allow-Methods'] ='GET,POST';
-    // const httpsAgent = new https.Agent({ ca: fs.readFileSync("C:/Users/33072/OneDrive - Altus Group Limited/Downloads/ZscalerRoot.pem") });
-    // axios.defaults.httpAgent = httpsAgent
-
-    // axios.defaults.headers["Referrer-Policy"]=["strict-origin-when-cross-origin"]
-    // axios.defaults.headers.post['Access-Control-Allow-Origin'] ='*';
-    // axios.defaults.headers.post['Access-Control-Allow-Credentials'] =true;
-    // axios.defaults.headers.post['Access-Control-Allow-Headers'] = '*';
-    // axios.defaults.headers.post['Access-Control-Allow-Methods'] ='GET,POST,OPTIONS';
-
     axios.post( `${apiBaseUrl || ""}/api/search`, body)
       .then(response => {
             console.log(JSON.stringify(response.data))
@@ -130,7 +117,7 @@ export default function Search() {
   // pushing the new search term to history when q is updated
   // allows the back button to work as expected when coming back from the details page
   useEffect(() => {
-    navigate('/search?q=' + q);  
+    navigate('/search?q=' + q); 
     setCurrentPage(1);
     setFilters(filters);
     setCheckedFilters(checkedFilters);
