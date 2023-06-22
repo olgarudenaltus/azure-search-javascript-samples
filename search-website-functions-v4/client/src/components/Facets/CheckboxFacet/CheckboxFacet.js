@@ -40,6 +40,9 @@ export default function CheckboxFacet(props) {
         else if(facetValue.value == "W"){
             isSelected = props.checkedFilters.some(f => f=="b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_JgIzt0vFmoQ65pvesri2Xk");
         }
+        else if(facetValue.value == "T"){
+            isSelected = props.checkedFilters.some(f => f=="b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KQpDYDuHdvSL0JAe7qdEAc");
+        }
         else {
             isSelected = props.checkedFilters.some(f => f==facetValue.value);
         }
