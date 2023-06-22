@@ -6,6 +6,7 @@ import "./Facets.css";
 
 export default function Facets(props) {
 
+// T: b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KQpDYDuHdvSL0JAe7qdEAc
     const driveIDs = [
         {
             driveName:"W",
@@ -14,6 +15,10 @@ export default function Facets(props) {
         {
             driveName:"Y",
             driveID:"b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KnkfD-Dh--QbgG1RLg5ES_"
+        },
+        {
+            driveName:"T",
+            driveID:"b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KQpDYDuHdvSL0JAe7qdEAc"
         }
     ]
 
@@ -47,6 +52,9 @@ export default function Facets(props) {
         else if (driveName=="W"){
             return "b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_JgIzt0vFmoQ65pvesri2Xk"
         }
+        else if (driveName=="T"){
+            return "b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KQpDYDuHdvSL0JAe7qdEAc"
+        }
     }
 
 
@@ -60,6 +68,10 @@ export default function Facets(props) {
         }
         else if (value=="W"){
             const newFilters = props.checkedFilters.concat("b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_JgIzt0vFmoQ65pvesri2Xk");
+            props.setCheckedFilters(newFilters);
+        }
+        else if (value=="T"){
+            const newFilters = props.checkedFilters.concat("b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KQpDYDuHdvSL0JAe7qdEAc");
             props.setCheckedFilters(newFilters);
         }
         else {
@@ -89,6 +101,10 @@ export default function Facets(props) {
         }
         else if (value=="W" || value=="b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_JgIzt0vFmoQ65pvesri2Xk"){
             const newFilters = props.checkedFilters.filter((item) => item !== "b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_JgIzt0vFmoQ65pvesri2Xk");
+            props.setCheckedFilters(newFilters);
+        }
+        else if (value=="T" || value=="b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KQpDYDuHdvSL0JAe7qdEAc"){
+            const newFilters = props.checkedFilters.filter((item) => item !== "b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KQpDYDuHdvSL0JAe7qdEAc");
             props.setCheckedFilters(newFilters);
         }
         else {
@@ -217,6 +233,11 @@ export default function Facets(props) {
             else if (item=="b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_JgIzt0vFmoQ65pvesri2Xk"){
                 return(<li class="list-group-item border-0 p-1">
                     <span key = {index} class="badge rounded-pill text-bg-secondary">W</span>
+                </li>)
+            }
+            else if (item=="b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KQpDYDuHdvSL0JAe7qdEAc"){
+                return(<li class="list-group-item border-0 p-1">
+                    <span key = {index} class="badge rounded-pill text-bg-secondary">T</span>
                 </li>)
             }
             else {
