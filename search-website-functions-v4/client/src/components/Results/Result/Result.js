@@ -9,7 +9,7 @@ export default function Result(props) {
 
 
     function copyFolderPath() {
-        var folderPath = props.document.metadata_spo_library_id=="b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KnkfD-Dh--QbgG1RLg5ES_"?"Y:"+props.document.metadata_spo_item_path.substr(0, props.document.metadata_spo_item_path.lastIndexOf("/")).substr(props.document.metadata_spo_item_path.indexOf(":/")+1, props.document.metadata_spo_item_path.lastIndexOf("/")):"W:"+props.document.metadata_spo_item_path.substr(0, props.document.metadata_spo_item_path.lastIndexOf("/")).substr(props.document.metadata_spo_item_path.indexOf(":/")+1, props.document.metadata_spo_item_path.lastIndexOf("/"));
+        var folderPath = props.document.metadata_spo_library_id=="b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KQpDYDuHdvSL0JAe7qdEAc"?"T:"+props.document.metadata_spo_item_path.substr(0, props.document.metadata_spo_item_path.lastIndexOf("/")).substr(props.document.metadata_spo_item_path.indexOf(":/")+1, props.document.metadata_spo_item_path.lastIndexOf("/")):props.document.metadata_spo_library_id=="b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KnkfD-Dh--QbgG1RLg5ES_"?"Y:"+props.document.metadata_spo_item_path.substr(0, props.document.metadata_spo_item_path.lastIndexOf("/")).substr(props.document.metadata_spo_item_path.indexOf(":/")+1, props.document.metadata_spo_item_path.lastIndexOf("/")):"W:"+props.document.metadata_spo_item_path.substr(0, props.document.metadata_spo_item_path.lastIndexOf("/")).substr(props.document.metadata_spo_item_path.indexOf(":/")+1, props.document.metadata_spo_item_path.lastIndexOf("/"));
         props.setCopyPathFolder(folderPath);
         navigator.clipboard.writeText(folderPath);
         props.setShowFolderAlert(true)
@@ -19,7 +19,7 @@ export default function Result(props) {
     }
 
     function copyFilePath() {
-        var filePath = props.document.metadata_spo_library_id=="b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KnkfD-Dh--QbgG1RLg5ES_"?"Y:"+props.document.metadata_spo_item_path.substr(props.document.metadata_spo_item_path.indexOf(":/")+1, props.document.metadata_spo_item_path.lastIndexOf("/")):"W:"+props.document.metadata_spo_item_path.substr(props.document.metadata_spo_item_path.indexOf(":/")+1, props.document.metadata_spo_item_path.lastIndexOf("/"));
+        var filePath = props.document.metadata_spo_library_id=="b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KQpDYDuHdvSL0JAe7qdEAc"?"T:"+props.document.metadata_spo_item_path.substr(0, props.document.metadata_spo_item_path.lastIndexOf("/")).substr(props.document.metadata_spo_item_path.indexOf(":/")+1, props.document.metadata_spo_item_path.lastIndexOf("/")):props.document.metadata_spo_library_id=="b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KnkfD-Dh--QbgG1RLg5ES_"?"Y:"+props.document.metadata_spo_item_path.substr(props.document.metadata_spo_item_path.indexOf(":/")+1, props.document.metadata_spo_item_path.lastIndexOf("/")):"W:"+props.document.metadata_spo_item_path.substr(props.document.metadata_spo_item_path.indexOf(":/")+1, props.document.metadata_spo_item_path.lastIndexOf("/"));
         props.setCopyPathFile(filePath);
         navigator.clipboard.writeText(filePath);
         props.setShowFileAlert(true)
