@@ -1,15 +1,14 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import CircularProgress  from '@material-ui/core/CircularProgress';
 import { useLocation, useNavigate } from "react-router-dom";
+
+import { useUser } from '../../contexts/AuthContext';
 
 import Results from '../../components/Results/Results';
 import Pager from '../../components/Pager/Pager';
 import Facets from '../../components/Facets/Facets';
 import SearchBar from '../../components/SearchBar/SearchBar';
-
-// import * as fs from 'fs';
-// import * as https from 'https';
 
 import apiBaseUrl from "../../config";
 import "./Search.css";
@@ -31,6 +30,8 @@ export default function Search() {
   const [ checkedFilters, setCheckedFilters] = useState([]); // list of applied filters
   const [ checkedFiltersMap, setCheckedFiltersMap] = useState([]); //list of dictionaries: "filterName":["filterValue1","filterValue2"]
   
+  
+
   let resultsPerPage = top;
 
   function splitJoin(arr) {
@@ -45,19 +46,21 @@ export default function Search() {
       }
     });
 
-    const str1 = arrWithSpace.length==0?"":"\"\\\""+arrWithSpace.join("\\\"\"|\"\\\"")+"\\\"\"";
-    const str2 = arrWithoutSpace.length==0?"":"\""+arrWithoutSpace.join("\"|\"")+"\""
+    // changed == to === below until } because linter was showing a warning
+
+    const str1 = arrWithSpace.length===0?"":"\"\\\""+arrWithSpace.join("\\\"\"|\"\\\"")+"\\\"\"";
+    const str2 = arrWithoutSpace.length===0?"":"\""+arrWithoutSpace.join("\"|\"")+"\""
   
     // const str1 = "\"\\\""+arrWithSpace.join("\\\"\"|\"\\\"")+"\\\"\"";
     // const str2 = "\""+arrWithoutSpace.join("\"|\"")+"\"";
 
-    if (str1=="" && str2==""){
+    if (str1==="" && str2===""){
       return ""
     }
-    else if (str1==""){
+    else if (str1===""){
       return "("+str2+")"
     }
-    else if (str2==""){
+    else if (str2===""){
       return "("+str1+")"
     }
     else {
@@ -69,8 +72,6 @@ export default function Search() {
     // return str1 +"|"+ str2;
   }
 
-  // T drive library id: "b!YkZ53NE4-E-IQGsKWThfdNPDxichE6FOtE2_hwunD_KQpDYDuHdvSL0JAe7qdEAc"
-
   function constructFilterQuery(filtersMap) {
       const queryString = Object.entries(filtersMap).map(([key, value]) => {
           return `${splitJoin(value)}`;
@@ -80,10 +81,15 @@ export default function Search() {
       return queryString.join('+');
   }
 
-  const filterQuery = constructFilterQuery(checkedFiltersMap);
+  const filterQuery = constructFilterQuery(checkedFiltersMap)
 
   
   useEffect(() => {
+    // Check if user belongs to a group
+    // if (!isUserInAllowedGroup) {
+    //   console.log("User is not authorized to perform this action");
+    //   return;
+    // }
     setIsLoading(true);
     setSkip((currentPage-1) * top);
     const body = {
