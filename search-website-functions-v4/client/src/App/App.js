@@ -43,6 +43,8 @@ export default function App() {
     }
   }
 
+  // Dev test
+
   // Fetch user groups
   async function fetchUserGroups(){
     const userId = user.clientPrincipal.userId
